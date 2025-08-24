@@ -6,7 +6,7 @@ const FacultyCard = ({ faculty, department, index }) => {
   if (!faculty) return null;
   
   const facultyName = faculty.name || 'Unknown Faculty';
-  const facultyDesignation = faculty.designation || 'Unknown Designation';
+  const facultyDesignation = faculty.designation || 'Unknown Position';
   const facultyEmail = faculty.email || 'No email provided';
   const facultyOffice = faculty['office#'] || 'N/A';
   const facultyDepartment = department || 'Unknown Department';
@@ -15,7 +15,7 @@ const FacultyCard = ({ faculty, department, index }) => {
   const copyToClipboard = (text, type) => {
     if (!text) return;
     navigator.clipboard.writeText(text).then(() => {
-      console.log(`${type} copied to clipboard: ${text}`);
+      // Silent copy - no console logs for better performance
     }).catch(err => {
       console.warn('Failed to copy to clipboard:', err);
     });
@@ -67,7 +67,7 @@ const FacultyCard = ({ faculty, department, index }) => {
       </div>
 
       <div className="p-4 sm:p-6 pt-3 sm:pt-4">
-        {/* Faculty Name and Designation */}
+        {/* Faculty Name and Position */}
         <div className="mb-4 sm:mb-6">
           <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 leading-tight">
             {facultyName}
@@ -108,7 +108,7 @@ const FacultyCard = ({ faculty, department, index }) => {
           </div>
         )}
 
-        {/* Contact Information - Mobile Optimized */}
+        {/* Contact Information */}
         <div className="space-y-3 sm:space-y-4">
           {/* Email */}
           <div 
@@ -147,7 +147,7 @@ const FacultyCard = ({ faculty, department, index }) => {
           </div>
         </div>
 
-        {/* Action Buttons - Mobile Optimized */}
+        {/* Action Buttons */}
         <div className="mt-4 sm:mt-6 pt-4 border-t border-gray-100 flex flex-col sm:flex-row gap-3 sm:gap-2">
           <button
             onClick={openGmail}
@@ -162,7 +162,7 @@ const FacultyCard = ({ faculty, department, index }) => {
             Send Email
           </button>
           
-          {/* Quick Copy Button for Mobile */}
+          {/* Quick Copy for Mobile */}
           <button
             onClick={() => {
               const courseList = facultyCourses.length > 0 

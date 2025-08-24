@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Search, X, BookOpen, User } from 'lucide-react';
 
-const SearchBar = ({ onSearch, suggestions, showSuggestions, onSuggestionClick, onClearSearch }) => {
-  const [query, setQuery] = useState('');
+const SearchBar = ({ onSearch, suggestions, showSuggestions, onSuggestionClick, onClearSearch, query }) => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef(null);
@@ -13,7 +12,6 @@ const SearchBar = ({ onSearch, suggestions, showSuggestions, onSuggestionClick, 
 
   const handleInputChange = (e) => {
     const value = e.target.value;
-    setQuery(value);
     setSelectedIndex(-1);
     if (onSearch) onSearch(value);
   };
@@ -50,15 +48,12 @@ const SearchBar = ({ onSearch, suggestions, showSuggestions, onSuggestionClick, 
   const handleSuggestionClick = (suggestion) => {
     if (!suggestion) return;
     
-    const name = suggestion.name || '';
-    setQuery(name);
     setSelectedIndex(-1);
     if (onSuggestionClick) onSuggestionClick(suggestion);
     inputRef.current?.blur();
   };
 
   const handleClear = () => {
-    setQuery('');
     setSelectedIndex(-1);
     if (onClearSearch) onClearSearch();
     inputRef.current?.focus();
@@ -106,8 +101,9 @@ const SearchBar = ({ onSearch, suggestions, showSuggestions, onSuggestionClick, 
           onKeyDown={handleKeyDown}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setTimeout(() => setIsFocused(false), 150)}
-          placeholder="Search faculty or courses (e.g., 'PF', 'Data Structures', 'Dr. Ahmad')..."
+          placeholder="Search faculty or courses (e.g., 'Programming Fundamentals', 'Dr. Ahmad')"
           className="w-full pl-12 pr-12 py-4 text-lg text-gray-900 bg-white border-2 border-gray-300 rounded-2xl focus:border-slate-500 focus:ring-4 focus:ring-slate-200 focus:outline-none placeholder-gray-500"
+          style={{ fontSize: '16px' }} // Prevent zoom on iOS
         />
         
         {query && (
@@ -127,7 +123,7 @@ const SearchBar = ({ onSearch, suggestions, showSuggestions, onSuggestionClick, 
               if (!suggestion) return null;
               
               const facultyName = suggestion.name || 'Unknown Faculty';
-              const facultyDesignation = suggestion.designation || 'Unknown Designation';
+              const facultyDesignation = suggestion.designation || 'Unknown Position';
               const facultyDepartment = suggestion.department || 'Unknown Department';
               const facultyEmail = suggestion.email || '';
               const facultyCourses = suggestion.courses || [];

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback, useRef } from 'react';
 import { Users, Grid, List } from 'lucide-react';
 import SearchBar from './components/SearchBar';
 import FacultyCard from './components/FacultyCard';
@@ -8,11 +8,29 @@ import { courseData, courseAliases } from './data/courseData';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [debouncedQuery, setDebouncedQuery] = useState('');
   const [viewMode, setViewMode] = useState('grid');
   const [sortBy, setSortBy] = useState('name');
   const [hasSearched, setHasSearched] = useState(false);
+  const debounceRef = useRef(null);
 
-  // Enhanced fuzzy search function
+  // Debounced search for better performance
+  const handleSearchInput = useCallback((query) => {
+    setSearchQuery(query);
+    
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current);
+    }
+    
+    debounceRef.current = setTimeout(() => {
+      setDebouncedQuery(query);
+      if (query.trim()) {
+        setHasSearched(true);
+      }
+    }, 150); // Reduced debounce time
+  }, []);
+
+  // Optimized fuzzy search function
   const fuzzyMatch = useCallback((text, query) => {
     if (!query.trim() || !text) return { matches: false, score: 0 };
     
@@ -24,43 +42,38 @@ function App() {
       return { matches: true, score: 1000 };
     }
     
-    // Check if all characters in query exist in text (in order)
-    let textIndex = 0;
-    let queryIndex = 0;
+    // Simple character matching for performance
     let score = 0;
-    let consecutiveMatches = 0;
+    let lastIndex = -1;
     
-    while (textIndex < textLower.length && queryIndex < queryLower.length) {
-      if (textLower[textIndex] === queryLower[queryIndex]) {
-        queryIndex++;
-        consecutiveMatches++;
-        score += consecutiveMatches * 10;
-      } else {
-        consecutiveMatches = 0;
-      }
-      textIndex++;
+    for (let i = 0; i < queryLower.length; i++) {
+      const charIndex = textLower.indexOf(queryLower[i], lastIndex + 1);
+      if (charIndex === -1) return { matches: false, score: 0 };
+      score += (10 - (charIndex - lastIndex));
+      lastIndex = charIndex;
     }
     
-    if (queryIndex === queryLower.length) {
-      score += Math.max(0, 100 - textLower.length);
-      return { matches: true, score };
-    }
-    
-    return { matches: false, score: 0 };
+    return { matches: true, score };
   }, []);
 
-  // Get course information for faculty
+  // Memoized course info lookup with caching
+  const courseCache = useRef(new Map());
+  
   const getCourseInfo = useCallback((facultyName) => {
     if (!facultyName || !courseData) return [];
+    
+    if (courseCache.current.has(facultyName)) {
+      return courseCache.current.get(facultyName);
+    }
     
     const courses = [];
     
     try {
-      // Search in theory courses
-      if (courseData.theory && Array.isArray(courseData.theory)) {
-        courseData.theory.forEach(course => {
-          if (course.sections && Array.isArray(course.sections)) {
-            course.sections.forEach(section => {
+      // Search theory courses
+      if (courseData.theory) {
+        for (const course of courseData.theory) {
+          if (course.sections) {
+            for (const section of course.sections) {
               if (section.teacher_name === facultyName) {
                 courses.push({
                   name: course.course_name || 'Unknown Course',
@@ -68,16 +81,16 @@ function App() {
                   type: 'Theory'
                 });
               }
-            });
+            }
           }
-        });
+        }
       }
       
-      // Search in lab courses
-      if (courseData.lab && Array.isArray(courseData.lab)) {
-        courseData.lab.forEach(course => {
-          if (course.sections && Array.isArray(course.sections)) {
-            course.sections.forEach(section => {
+      // Search lab courses
+      if (courseData.lab) {
+        for (const course of courseData.lab) {
+          if (course.sections) {
+            for (const section of course.sections) {
               if (section.lab_course_instructor === facultyName) {
                 courses.push({
                   name: course.course_name || 'Unknown Course',
@@ -85,245 +98,237 @@ function App() {
                   type: 'Lab'
                 });
               }
-            });
+            }
           }
-        });
+        }
       }
     } catch (error) {
-      console.warn('Error getting course info for', facultyName, error);
+      console.warn('Error getting course info:', error);
     }
     
+    courseCache.current.set(facultyName, courses);
     return courses;
   }, []);
 
+  // Optimized faculty data processing
   const allFaculty = useMemo(() => {
     if (!facultyData || !Array.isArray(facultyData)) return [];
     
-    try {
-      return facultyData.flatMap(dept => 
-        (dept.faculty && Array.isArray(dept.faculty)) ? dept.faculty.map(faculty => ({
-          ...faculty,
-          department: dept.department || 'Unknown Department',
-          courses: getCourseInfo(faculty.name)
-        })) : []
-      );
-    } catch (error) {
-      console.error('Error processing faculty data:', error);
-      return [];
+    const faculty = [];
+    for (const dept of facultyData) {
+      if (dept.faculty && Array.isArray(dept.faculty)) {
+        for (const member of dept.faculty) {
+          faculty.push({
+            ...member,
+            department: dept.department || 'Unknown Department',
+            courses: getCourseInfo(member.name)
+          });
+        }
+      }
     }
+    return faculty;
   }, [getCourseInfo]);
 
-  // Enhanced search with course support
+  // Optimized search with early returns and limits
   const filteredFaculty = useMemo(() => {
-    let filtered = allFaculty;
-
-    if (searchQuery.trim()) {
-      const results = [];
-      const queryLower = searchQuery.toLowerCase().trim();
-      const addedFaculty = new Set(); // Track added faculty to prevent duplicates
-      
-      // Check if query matches course aliases
-      const matchedCourse = courseAliases ? courseAliases[queryLower] : null;
-      
-      filtered.forEach(faculty => {
-        let maxScore = 0;
-        let hasMatch = false;
-        
-        try {
-          // Search in faculty name
-          const nameMatch = fuzzyMatch(faculty.name || '', searchQuery);
-          if (nameMatch.matches) {
-            maxScore = Math.max(maxScore, nameMatch.score);
-            hasMatch = true;
-          }
-          
-          // Search in designation
-          const designationMatch = fuzzyMatch(faculty.designation || '', searchQuery);
-          if (designationMatch.matches) {
-            maxScore = Math.max(maxScore, designationMatch.score);
-            hasMatch = true;
-          }
-          
-          // Search in department
-          const departmentMatch = fuzzyMatch(faculty.department || '', searchQuery);
-          if (departmentMatch.matches) {
-            maxScore = Math.max(maxScore, departmentMatch.score);
-            hasMatch = true;
-          }
-          
-          // Search in email
-          const emailMatch = fuzzyMatch(faculty.email || '', searchQuery);
-          if (emailMatch.matches) {
-            maxScore = Math.max(maxScore, emailMatch.score);
-            hasMatch = true;
-          }
-          
-          // Search in courses taught by faculty
-          if (faculty.courses && Array.isArray(faculty.courses)) {
-            faculty.courses.forEach(course => {
-              const courseMatch = fuzzyMatch(course.name || '', searchQuery);
-              if (courseMatch.matches) {
-                maxScore = Math.max(maxScore, courseMatch.score + 500); // Boost course matches
-                hasMatch = true;
-              }
-              
-              // Check against course aliases
-              if (matchedCourse && course.name && course.name.toLowerCase().includes(matchedCourse.toLowerCase())) {
-                maxScore = Math.max(maxScore, 1500); // Highest priority for alias matches
-                hasMatch = true;
-              }
-            });
-          }
-          
-          // Create unique key for faculty to prevent duplicates
-          const facultyKey = `${faculty.name || 'unknown'}-${faculty.email || 'unknown'}-${faculty.department || 'unknown'}`;
-          
-          if (hasMatch && !addedFaculty.has(facultyKey)) {
-            addedFaculty.add(facultyKey);
-            results.push({ ...faculty, searchScore: maxScore });
-          }
-        } catch (error) {
-          console.warn('Error processing faculty in search:', faculty.name, error);
-        }
-      });
-      
-      filtered = results.sort((a, b) => b.searchScore - a.searchScore);
-    } else {
-      filtered.sort((a, b) => {
-        try {
-          switch (sortBy) {
-            case 'name':
-              return (a.name || '').localeCompare(b.name || '');
-            case 'department':
-              return (a.department || '').localeCompare(b.department || '');
-            case 'designation':
-              return (a.designation || '').localeCompare(b.designation || '');
-            default:
-              return 0;
-          }
-        } catch (error) {
-          console.warn('Error sorting faculty:', error);
-          return 0;
+    if (!debouncedQuery.trim()) {
+      return allFaculty.slice().sort((a, b) => {
+        switch (sortBy) {
+          case 'name':
+            return (a.name || '').localeCompare(b.name || '');
+          case 'department':
+            return (a.department || '').localeCompare(b.department || '');
+          case 'designation':
+            return (a.designation || '').localeCompare(b.designation || '');
+          default:
+            return 0;
         }
       });
     }
 
-    return filtered;
-  }, [allFaculty, searchQuery, sortBy, fuzzyMatch, courseAliases]);
+    const results = [];
+    const queryLower = debouncedQuery.toLowerCase().trim();
+    const addedFaculty = new Set();
+    const matchedCourse = courseAliases[queryLower];
+    
+    for (const faculty of allFaculty) {
+      let maxScore = 0;
+      let hasMatch = false;
+      
+      // Quick name check first (most common search)
+      const nameMatch = fuzzyMatch(faculty.name || '', debouncedQuery);
+      if (nameMatch.matches) {
+        maxScore = nameMatch.score;
+        hasMatch = true;
+      }
+      
+      // Only check other fields if name didn't match
+      if (!hasMatch) {
+        const designationMatch = fuzzyMatch(faculty.designation || '', debouncedQuery);
+        if (designationMatch.matches) {
+          maxScore = Math.max(maxScore, designationMatch.score);
+          hasMatch = true;
+        }
+        
+        const departmentMatch = fuzzyMatch(faculty.department || '', debouncedQuery);
+        if (departmentMatch.matches) {
+          maxScore = Math.max(maxScore, departmentMatch.score);
+          hasMatch = true;
+        }
+        
+        const emailMatch = fuzzyMatch(faculty.email || '', debouncedQuery);
+        if (emailMatch.matches) {
+          maxScore = Math.max(maxScore, emailMatch.score);
+          hasMatch = true;
+        }
+      }
+      
+      // Course search
+      if (faculty.courses && faculty.courses.length > 0) {
+        for (const course of faculty.courses) {
+          const courseMatch = fuzzyMatch(course.name || '', debouncedQuery);
+          if (courseMatch.matches) {
+            maxScore = Math.max(maxScore, courseMatch.score + 500);
+            hasMatch = true;
+          }
+          
+          if (matchedCourse && course.name && course.name.toLowerCase().includes(matchedCourse.toLowerCase())) {
+            maxScore = Math.max(maxScore, 1500);
+            hasMatch = true;
+          }
+        }
+      }
+      
+      const facultyKey = `${faculty.name || 'unknown'}-${faculty.email || 'unknown'}`;
+      
+      if (hasMatch && !addedFaculty.has(facultyKey)) {
+        addedFaculty.add(facultyKey);
+        results.push({ ...faculty, searchScore: maxScore });
+        
+        // Limit results for performance
+        if (results.length >= 50) break;
+      }
+    }
+    
+    return results.sort((a, b) => b.searchScore - a.searchScore);
+  }, [allFaculty, debouncedQuery, sortBy, fuzzyMatch]);
 
+  // Optimized suggestions with limits
   const suggestions = useMemo(() => {
-    if (!searchQuery.trim()) return [];
+    if (!searchQuery.trim() || searchQuery.length < 2) return [];
     
     const results = [];
     const queryLower = searchQuery.toLowerCase().trim();
-    const addedSuggestions = new Set(); // Track added suggestions to prevent duplicates
+    const addedSuggestions = new Set();
+    const matchedCourse = courseAliases[queryLower];
     
-    try {
-      // Add course suggestions
-      const matchedCourse = courseAliases ? courseAliases[queryLower] : null;
-      if (matchedCourse) {
-        allFaculty.forEach(faculty => {
-          if (faculty.courses && Array.isArray(faculty.courses)) {
-            faculty.courses.forEach(course => {
-              if (course.name && course.name.toLowerCase().includes(matchedCourse.toLowerCase())) {
-                const suggestionKey = `${faculty.name || 'unknown'}-${faculty.email || 'unknown'}`;
-                if (!addedSuggestions.has(suggestionKey)) {
-                  addedSuggestions.add(suggestionKey);
-                  results.push({ ...faculty, searchScore: 1500, matchType: 'course' });
-                }
+    // Course suggestions first
+    if (matchedCourse) {
+      for (const faculty of allFaculty) {
+        if (faculty.courses && faculty.courses.length > 0) {
+          for (const course of faculty.courses) {
+            if (course.name && course.name.toLowerCase().includes(matchedCourse.toLowerCase())) {
+              const suggestionKey = `${faculty.name || 'unknown'}-${faculty.email || 'unknown'}`;
+              if (!addedSuggestions.has(suggestionKey)) {
+                addedSuggestions.add(suggestionKey);
+                results.push({ ...faculty, searchScore: 1500, matchType: 'course' });
+                if (results.length >= 4) break;
               }
-            });
+            }
           }
-        });
+          if (results.length >= 4) break;
+        }
       }
-      
-      // Add faculty name suggestions
-      allFaculty.forEach(faculty => {
+    }
+    
+    // Faculty name suggestions
+    if (results.length < 6) {
+      for (const faculty of allFaculty) {
         const nameMatch = fuzzyMatch(faculty.name || '', searchQuery);
         if (nameMatch.matches) {
           const suggestionKey = `${faculty.name || 'unknown'}-${faculty.email || 'unknown'}`;
           if (!addedSuggestions.has(suggestionKey)) {
             addedSuggestions.add(suggestionKey);
             results.push({ ...faculty, searchScore: nameMatch.score, matchType: 'faculty' });
+            if (results.length >= 6) break;
           }
         }
-      });
-    } catch (error) {
-      console.warn('Error generating suggestions:', error);
+      }
     }
     
-    return results
-      .sort((a, b) => b.searchScore - a.searchScore)
-      .slice(0, 8);
-  }, [searchQuery, allFaculty, fuzzyMatch, courseAliases]);
-
-  const handleSearch = useCallback((query) => {
-    setSearchQuery(query);
-    if (query.trim()) {
-      setHasSearched(true);
-    }
-  }, []);
+    return results.sort((a, b) => b.searchScore - a.searchScore).slice(0, 6);
+  }, [searchQuery, allFaculty, fuzzyMatch]);
 
   const handleSuggestionClick = useCallback((faculty) => {
-    setSearchQuery(faculty.name || '');
+    const name = faculty.name || '';
+    setSearchQuery(name);
+    setDebouncedQuery(name);
     setHasSearched(true);
   }, []);
 
   const handleClearSearch = useCallback(() => {
     setSearchQuery('');
+    setDebouncedQuery('');
     setHasSearched(false);
   }, []);
 
-  const shouldShowResults = hasSearched && searchQuery.trim();
+  const shouldShowResults = hasSearched && debouncedQuery.trim();
 
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Hero Section */}
+      {/* Header Section */}
       <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4 py-16 sm:py-20">
           <div className="text-center">
             <div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
-                Fast Faculty Directory
+                Faculty Directory
               </h1>
               <p className="text-lg sm:text-xl text-slate-300 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
-                Islamabad Campus • Find faculty members and course information instantly
+                FAST NUCES Islamabad Campus - Find faculty contact information instantly
               </p>
             </div>
 
             <div className="max-w-2xl mx-auto mb-12 sm:mb-16">
               <SearchBar
-                onSearch={handleSearch}
+                onSearch={handleSearchInput}
                 suggestions={suggestions}
                 showSuggestions={suggestions.length > 0 && searchQuery.trim()}
                 onSuggestionClick={handleSuggestionClick}
                 onClearSearch={handleClearSearch}
+                query={searchQuery}
               />
             </div>
 
             {/* Features */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto px-4">
               <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-slate-700">
-                <div className="h-8 w-8 mx-auto mb-3 sm:mb-4 text-blue-400">⚡</div>
-                <h3 className="text-base sm:text-lg font-semibold mb-2">Lightning Fast</h3>
+                <div className="h-8 w-8 mx-auto mb-3 sm:mb-4 text-blue-400">
+                  <Users className="h-8 w-8" />
+                </div>
+                <h3 className="text-base sm:text-lg font-semibold mb-2">Fast Search</h3>
                 <p className="text-slate-400 text-sm">
-                  Zero delay search with instant results
+                  Instant results for names and courses
                 </p>
               </div>
               
               <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-slate-700">
-                <div className="h-8 w-8 mx-auto mb-3 sm:mb-4 text-green-400">📚</div>
-                <h3 className="text-base sm:text-lg font-semibold mb-2">Course Info</h3>
+                <div className="h-8 w-8 mx-auto mb-3 sm:mb-4 text-green-400">
+                  <Grid className="h-8 w-8" />
+                </div>
+                <h3 className="text-base sm:text-lg font-semibold mb-2">Course Details</h3>
                 <p className="text-slate-400 text-sm">
-                  Search by course name or find teaching assignments
+                  View teaching assignments and sections
                 </p>
               </div>
               
               <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-slate-700 sm:col-span-2 lg:col-span-1">
-                <div className="h-8 w-8 mx-auto mb-3 sm:mb-4 text-orange-400">📍</div>
-                <h3 className="text-base sm:text-lg font-semibold mb-2">Contact Details</h3>
+                <div className="h-8 w-8 mx-auto mb-3 sm:mb-4 text-orange-400">
+                  <List className="h-8 w-8" />
+                </div>
+                <h3 className="text-base sm:text-lg font-semibold mb-2">Contact Info</h3>
                 <p className="text-slate-400 text-sm">
-                  Get office numbers and email addresses
+                  Office locations and email addresses
                 </p>
               </div>
             </div>
@@ -331,7 +336,7 @@ function App() {
         </div>
       </div>
 
-      {/* Controls and Results */}
+      {/* Results Section */}
       {shouldShowResults && (
         <div>
           {/* Controls */}
@@ -345,9 +350,9 @@ function App() {
                   </span>
                 </div>
                 
-                {searchQuery && (
+                {debouncedQuery && (
                   <span className="text-sm text-gray-500">
-                    for "{searchQuery}"
+                    for "{debouncedQuery}"
                   </span>
                 )}
 
@@ -367,7 +372,7 @@ function App() {
                 >
                   <option value="name">Sort by Name</option>
                   <option value="department">Sort by Department</option>
-                  <option value="designation">Sort by Designation</option>
+                  <option value="designation">Sort by Position</option>
                 </select>
 
                 <div className="flex items-center bg-gray-100 rounded-lg p-1">
@@ -392,7 +397,7 @@ function App() {
             </div>
           </div>
 
-          {/* Results */}
+          {/* Faculty Grid */}
           <div className="max-w-7xl mx-auto px-4 pb-20">
             {filteredFaculty.length > 0 ? (
               <div className={`grid gap-4 sm:gap-6 ${
@@ -414,7 +419,7 @@ function App() {
                 <div className="text-4xl sm:text-6xl mb-4 sm:mb-6">🔍</div>
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">No Results Found</h3>
                 <p className="text-gray-600 mb-6 sm:mb-8 px-4">
-                  No faculty members found for "{searchQuery}". Try searching for course names like "PF", "Data Structures", or faculty names.
+                  No faculty found for "{debouncedQuery}". Try searching for names or courses like "Programming Fundamentals".
                 </p>
                 <button
                   onClick={handleClearSearch}
