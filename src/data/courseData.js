@@ -575,6 +575,431 @@ export const courseData = {
       ]
     }
   ],
+  ee_department: [
+    // EE Department - BS CE Courses
+    {
+      "course_name": "Applied Calculus",
+      "course_code": "MT1001",
+      "sections": [
+        {"section": "CE Section A", "teacher_name": "Usman Ashraf"},
+        {"section": "CE Section B", "teacher_name": "Usman Ashraf"},
+        {"section": "CE Section C", "teacher_name": "Usman Ashraf"}
+      ]
+    },
+    {
+      "course_name": "Islamic Studies/Ethics",
+      "course_code": "SS1007",
+      "sections": [
+        {"section": "CE Section A", "teacher_name": "M. Ibrahim"},
+        {"section": "CE Section B", "teacher_name": "M. Ibrahim"},
+        {"section": "CE Section C", "teacher_name": "M. Ibrahim"}
+      ]
+    },
+    {
+      "course_name": "Understanding of Seerat un Nabi",
+      "course_code": "SS1019",
+      "sections": [
+        {"section": "CE Section A", "teacher_name": "M. Ibrahim"},
+        {"section": "CE Section B", "teacher_name": "M. Ibrahim"},
+        {"section": "CE Section C", "teacher_name": "M. Ibrahim"}
+      ]
+    },
+    {
+      "course_name": "Applications of ICT",
+      "course_code": "CS1009",
+      "sections": [
+        {"section": "CE Section A", "teacher_name": "M.Hammad"},
+        {"section": "CE Section B", "teacher_name": "M.Hammad"},
+        {"section": "CE Section C", "teacher_name": "M.Hammad"}
+      ]
+    },
+    {
+      "course_name": "Applied Physics",
+      "course_code": "NS1007",
+      "sections": [
+        {"section": "CE Section A", "teacher_name": "Mukhtar Ullah"},
+        {"section": "CE Section B", "teacher_name": "Niaz Ahmed"},
+        {"section": "CE Section C", "teacher_name": "Niaz Ahmed"}
+      ]
+    },
+    {
+      "course_name": "English Language Skills",
+      "course_code": "SS1005",
+      "sections": [
+        {"section": "CE Section A", "teacher_name": "Mr Hasham"},
+        {"section": "CE Section B", "teacher_name": "Mr Hasham"},
+        {"section": "CE Section C", "teacher_name": "Mr. Hasham"}
+      ]
+    },
+    {
+      "course_name": "Occupational Health and Safety",
+      "course_code": "MG1008",
+      "sections": [
+        {"section": "CE Section A", "teacher_name": "Saad Usman Shah"},
+        {"section": "CE Section B", "teacher_name": "Saad Usman Shah"},
+        {"section": "CE Section C", "teacher_name": "Saad Usman Shah"}
+      ]
+    },
+    {
+      "course_name": "Ideology and Constitution of Pakistan",
+      "course_code": "SS1013",
+      "sections": [
+        {"section": "CE Section A", "teacher_name": "Mr. Baber Ejaz."},
+        {"section": "CE Section B", "teacher_name": "Mr. Baber Ejaz."},
+        {"section": "CE Section C", "teacher_name": "Ms. Ghazal"}
+      ]
+    },
+    {
+      "course_name": "Object Oriented Programming",
+      "course_code": "CS1004",
+      "sections": [
+        {"section": "CE Section A", "teacher_name": "Aamer Munir"}
+      ]
+    },
+    {
+      "course_name": "Electronics Devices Circuits",
+      "course_code": "EE1004",
+      "sections": [
+        {"section": "CE Section A", "teacher_name": "Muhammad Awais"}
+      ]
+    },
+    {
+      "course_name": "Pakistan Studies",
+      "course_code": "SS1015",
+      "sections": [
+        {"section": "CE Section A", "teacher_name": "Ms. Asifa"}
+      ]
+    },
+    {
+      "course_name": "Complex-Variable & Transforms",
+      "course_code": "MT2003",
+      "sections": [
+        {"section": "CE Section A", "teacher_name": "Mr. M. Waqar Ahmad"}
+      ]
+    },
+    {
+      "course_name": "Discrete Structures",
+      "course_code": "CS1005",
+      "sections": [
+        {"section": "CE Section A", "teacher_name": "Mukhtar Ullah"}
+      ]
+    },
+    // EE Department - BS EE Courses
+    {
+      "course_name": "Islamic Studies/Ethics (EE)",
+      "course_code": "SS1007",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Dilnawaz Ahmad"},
+        {"section": "EE Section B", "teacher_name": "Dilnawaz Ahmad"},
+        {"section": "EE Section C", "teacher_name": "Dilnawaz Ahmad"}
+      ]
+    },
+    {
+      "course_name": "Understanding of Seerat un Nabi (EE)",
+      "course_code": "SS1019",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Dilnawaz Ahmad"},
+        {"section": "EE Section B", "teacher_name": "M. Ibrahim"},
+        {"section": "EE Section C", "teacher_name": "Dilnawaz Ahmad"}
+      ]
+    },
+    {
+      "course_name": "Engineering Drawing",
+      "course_code": "ME1001",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Moiza Eman (Vis)"},
+        {"section": "EE Section B", "teacher_name": "Shehzad Ahmad"},
+        {"section": "EE Section C", "teacher_name": "Abdur Rehman"},
+        {"section": "EE Section D", "teacher_name": "Moiza Eman (Vis)"},
+        {"section": "EE Section E", "teacher_name": "Shehzad Ahmad"}
+      ]
+    },
+    {
+      "course_name": "Applied Calculus (EE)",
+      "course_code": "MT1001",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Farah Asif"},
+        {"section": "EE Section B", "teacher_name": "Farah Asif"},
+        {"section": "EE Section C", "teacher_name": "Farah Asif"}
+      ]
+    },
+    {
+      "course_name": "Applied Physics (EE)",
+      "course_code": "NS1007",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Shahzad Saleem"},
+        {"section": "EE Section B", "teacher_name": "Fakhar Abbas"},
+        {"section": "EE Section C", "teacher_name": "Fakhar Abbas"}
+      ]
+    },
+    {
+      "course_name": "English Language",
+      "course_code": "SS1005",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Ms. Amna Hafeez"},
+        {"section": "EE Section B", "teacher_name": "Ms. Amna Hafeez"},
+        {"section": "EE Section C", "teacher_name": "Ms. Amna Hafeez"}
+      ]
+    },
+    {
+      "course_name": "Applications of ICT (EE)",
+      "course_code": "CS1009",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Sana Saleh"},
+        {"section": "EE Section B", "teacher_name": "Sana Saleh"},
+        {"section": "EE Section C", "teacher_name": "Sana Saleh"}
+      ]
+    },
+    {
+      "course_name": "Occupational Health and Safety (EE)",
+      "course_code": "MG1008",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Muhammad Awais"},
+        {"section": "EE Section B", "teacher_name": "Muhammad Awais"},
+        {"section": "EE Section C", "teacher_name": "Muhammad Awais"}
+      ]
+    },
+    {
+      "course_name": "Ideology and Constitution of Pakistan (EE)",
+      "course_code": "SS1013",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Ms. Madiha"},
+        {"section": "EE Section B", "teacher_name": "Ms. Madiha"},
+        {"section": "EE Section C", "teacher_name": "Ms. Madiha"}
+      ]
+    },
+    {
+      "course_name": "Programming Fundamentals (EE)",
+      "course_code": "CS1002",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "M.Hammad"}
+      ]
+    },
+    {
+      "course_name": "Linear Circuit Analysis",
+      "course_code": "EE1001",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Irum Saba"}
+      ]
+    },
+    {
+      "course_name": "Linear Algebra & Differential Equations",
+      "course_code": "MT1009",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Mehmood-ul-Hassan"}
+      ]
+    },
+    {
+      "course_name": "Object Oriented Data Structures",
+      "course_code": "CS2021",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Shahid Qureshi"},
+        {"section": "EE Section B", "teacher_name": "Shahid Qureshi"}
+      ]
+    },
+    {
+      "course_name": "Electrical Network Analysis",
+      "course_code": "EE2004",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Aamer Munir"},
+        {"section": "EE Section B", "teacher_name": "Aamer Munir"}
+      ]
+    },
+    {
+      "course_name": "Electronics Devices Circuits (EE)",
+      "course_code": "EE1004",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Maria Nasir"},
+        {"section": "EE Section B", "teacher_name": "Maria Nasir"},
+        {"section": "EE Section C", "teacher_name": "Shahzad Saleem"}
+      ]
+    },
+    {
+      "course_name": "Complex-Variable & Transforms (EE)",
+      "course_code": "MT2003",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "M. Waqar Ahmad"},
+        {"section": "EE Section B", "teacher_name": "M. Waqar Ahmad"}
+      ]
+    },
+    {
+      "course_name": "Multivariable Calculus",
+      "course_code": "MT2008",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Irfan Shah"},
+        {"section": "EE Section B", "teacher_name": "Irfan Shah"}
+      ]
+    },
+    {
+      "course_name": "Pakistan Studies (EE)",
+      "course_code": "SS1015",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Ms. Asifa"},
+        {"section": "EE Section B", "teacher_name": "Ms. Asifa"}
+      ]
+    },
+    {
+      "course_name": "Data Structures and Algorithms",
+      "course_code": "CS2002",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Shahid Qureshi"}
+      ]
+    },
+    {
+      "course_name": "Microprocessor Interfacing & Programming",
+      "course_code": "EE3002",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Waseem Ikram"},
+        {"section": "EE Section B", "teacher_name": "Shahzad Ahmed"}
+      ]
+    },
+    {
+      "course_name": "Electromagnetic Theory",
+      "course_code": "EE3005",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Irum Saba"},
+        {"section": "EE Section B", "teacher_name": "Irum Saba"}
+      ]
+    },
+    {
+      "course_name": "Analog & Digital Communications",
+      "course_code": "EE3003",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Shahzad Saleem"},
+        {"section": "EE Section B", "teacher_name": "Shahzad Saleem"}
+      ]
+    },
+    {
+      "course_name": "Applied Thermodynamics",
+      "course_code": "ME2002",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Al Bara Shalaby"},
+        {"section": "EE Section B", "teacher_name": "Al Bara Shalaby"}
+      ]
+    },
+    {
+      "course_name": "Electronics Circuits Design",
+      "course_code": "EE2001",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Muhammad Awais"}
+      ]
+    },
+    {
+      "course_name": "Data Communication & Networks",
+      "course_code": "EE2007",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Aamer Hafeez"},
+        {"section": "EE Section B", "teacher_name": "Aamer Hafeez"}
+      ]
+    },
+    {
+      "course_name": "Engineering Management",
+      "course_code": "MG4015",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Muhammad Saeed"},
+        {"section": "EE Section B", "teacher_name": "Muhammad Saeed"}
+      ]
+    },
+    {
+      "course_name": "Technical and Business Writing",
+      "course_code": "SS2012",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Aamer Hafeez"},
+        {"section": "EE Section B", "teacher_name": "Aamer Hafeez"}
+      ]
+    },
+    {
+      "course_name": "Final Year Project – I",
+      "course_code": "EE4091",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "No Teacher Assign"}
+      ]
+    },
+    {
+      "course_name": "Applied Machine Learning",
+      "course_code": "AI4003",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Muhammad Tariq"}
+      ]
+    },
+    {
+      "course_name": "Instrumentation and Measurements",
+      "course_code": "EE2031",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Ms. Maria (Vis)"}
+      ]
+    },
+    {
+      "course_name": "Embedded Systems",
+      "course_code": "EE3006",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "Niaz Ahmed"}
+      ]
+    },
+    {
+      "course_name": "Database Systems",
+      "course_code": "CS3020",
+      "sections": [
+        {"section": "EE Section A", "teacher_name": "M. Ibrar Khan"}
+      ]
+    },
+    {
+      "course_name": "Advanced Machine Learning",
+      "course_code": "AI5003",
+      "sections": [
+        {"section": "MSEE Evening", "teacher_name": "Farhan Khalid"}
+      ]
+    },
+    {
+      "course_name": "Advanced Network Security",
+      "course_code": "CS5042",
+      "sections": [
+        {"section": "MSEE Evening", "teacher_name": "Muhammad Tariq"}
+      ]
+    },
+    {
+      "course_name": "Engineering Optimization",
+      "course_code": "EE5035",
+      "sections": [
+        {"section": "MSEE Evening", "teacher_name": "Mukhtar Ullah"}
+      ]
+    },
+    {
+      "course_name": "Digital Integrated Circuits",
+      "course_code": "EE5036",
+      "sections": [
+        {"section": "MSEE Evening", "teacher_name": "Hassan Saif"}
+      ]
+    },
+    {
+      "course_name": "Analog and Discrete Electronics",
+      "course_code": "EE5013",
+      "sections": [
+        {"section": "MSEE Evening", "teacher_name": "Rashad Ramzan"}
+      ]
+    },
+    {
+      "course_name": "Digital ICs: Synthesis and Physical Design",
+      "course_code": "EE5037",
+      "sections": [
+        {"section": "MSEE Evening", "teacher_name": "Hassan Saif"}
+      ]
+    },
+    {
+      "course_name": "VSLI Design Verification & Testing",
+      "course_code": "EE5048",
+      "sections": [
+        {"section": "MSEE Evening", "teacher_name": "Rashad Ramzan"}
+      ]
+    },
+    {
+      "course_name": "Research Methodology",
+      "course_code": "EE5011",
+      "sections": [
+        {"section": "MSEE Evening", "teacher_name": "Dr. Khurram"}
+      ]
+    }
+  ],
   lab: [
     // BS Batch 2025 - 1st Semester Labs
     {
@@ -953,6 +1378,171 @@ export const courseData = {
         {"section": "BCY-7A", "lab_course_instructor": ""}
       ]
     }
+  ],
+  ee_lab: [
+    // EE Department Lab Courses - BS CE
+    {
+      "course_name": "Applications of ICT Lab (CE)",
+      "course_code": "CL1009",
+      "sections": [
+        {"section": "CE Section A", "lab_course_instructor": "Burhan Naeem"},
+        {"section": "CE Section B", "lab_course_instructor": "Nimra Fatima"},
+        {"section": "CE Section C", "lab_course_instructor": "Hazrat Ali"},
+        {"section": "CE Section D", "lab_course_instructor": "Burhan Naeem"}
+      ]
+    },
+    {
+      "course_name": "Applied Physics Lab (CE)",
+      "course_code": "NL1007",
+      "sections": [
+        {"section": "CE Section A", "lab_course_instructor": "Abdur Rehman"},
+        {"section": "CE Section B", "lab_course_instructor": "Burhan Naeem"},
+        {"section": "CE Section C", "lab_course_instructor": "Abdur Rehman"},
+        {"section": "CE Section D", "lab_course_instructor": "Burhan Naeem"}
+      ]
+    },
+    {
+      "course_name": "Object Oriented Programming Lab (CE)",
+      "course_code": "CL1004",
+      "sections": [
+        {"section": "CE Section A", "lab_course_instructor": "Fasih Ahmad"},
+        {"section": "CE Section B", "lab_course_instructor": "Fasih Ahmad"}
+      ]
+    },
+    {
+      "course_name": "Electronics Devices Circuits Lab (CE)",
+      "course_code": "EL1004",
+      "sections": [
+        {"section": "CE Section A", "lab_course_instructor": "Abu Bakar"},
+        {"section": "CE Section B", "lab_course_instructor": "Abu Bakar"}
+      ]
+    },
+    // EE Department Lab Courses - BS EE
+    {
+      "course_name": "Applied Physics Lab (EE)",
+      "course_code": "NL1007",
+      "sections": [
+        {"section": "EE Section A", "lab_course_instructor": "Fakhar Abbas"},
+        {"section": "EE Section B", "lab_course_instructor": "Deema Zargoon"},
+        {"section": "EE Section C", "lab_course_instructor": "Deema Zargoon"},
+        {"section": "EE Section D", "lab_course_instructor": "Deema Zargoon"},
+        {"section": "EE Section E", "lab_course_instructor": "Fakhar Abbas"}
+      ]
+    },
+    {
+      "course_name": "Applications of ICT Lab (EE)",
+      "course_code": "CL1009",
+      "sections": [
+        {"section": "EE Section A", "lab_course_instructor": "Nimra Fatima"},
+        {"section": "EE Section B", "lab_course_instructor": "Nimra Fatima"},
+        {"section": "EE Section C", "lab_course_instructor": "Sana Saleh"},
+        {"section": "EE Section D", "lab_course_instructor": "Nimra Fatima"},
+        {"section": "EE Section E", "lab_course_instructor": "Ammar Ali"}
+      ]
+    },
+    {
+      "course_name": "Programming Fundamentals Lab (EE)",
+      "course_code": "CL1002",
+      "sections": [
+        {"section": "EE Section A", "lab_course_instructor": "Ammar Ali"}
+      ]
+    },
+    {
+      "course_name": "Linear Circuit Analysis Lab",
+      "course_code": "EL1001",
+      "sections": [
+        {"section": "EE Section A", "lab_course_instructor": "Moiza Eman (Vis)"}
+      ]
+    },
+    {
+      "course_name": "Object Oriented Data Structures Lab",
+      "course_code": "CL2021",
+      "sections": [
+        {"section": "EE Section A", "lab_course_instructor": "Hazrat Ali"},
+        {"section": "EE Section B", "lab_course_instructor": "Hazrat Ali"},
+        {"section": "EE Section C", "lab_course_instructor": "Hazrat Ali"}
+      ]
+    },
+    {
+      "course_name": "Electrical Network Analysis Lab",
+      "course_code": "EL2004",
+      "sections": [
+        {"section": "EE Section A", "lab_course_instructor": "Shameer Hussain"},
+        {"section": "EE Section B", "lab_course_instructor": "Shameer Hussain"},
+        {"section": "EE Section C", "lab_course_instructor": "Shameer Hussain"}
+      ]
+    },
+    {
+      "course_name": "Electronics Devices Circuits Lab (EE)",
+      "course_code": "EL1004",
+      "sections": [
+        {"section": "EE Section A", "lab_course_instructor": "Sameen Arif"},
+        {"section": "EE Section B", "lab_course_instructor": "Sameen Arif"},
+        {"section": "EE Section C", "lab_course_instructor": "Abu Bakar"},
+        {"section": "EE Section D", "lab_course_instructor": "Sameen Arif"}
+      ]
+    },
+    {
+      "course_name": "Microprocessor Interfacing & Programming Lab",
+      "course_code": "EL3002",
+      "sections": [
+        {"section": "EE Section A", "lab_course_instructor": "Maryam Zafar"},
+        {"section": "EE Section B", "lab_course_instructor": "Maryam Zafar"},
+        {"section": "EE Section C", "lab_course_instructor": "Maryam Zafar"}
+      ]
+    },
+    {
+      "course_name": "Analog & Digital Communications Lab",
+      "course_code": "EL3003",
+      "sections": [
+        {"section": "EE Section A", "lab_course_instructor": "Tooba Azhar"},
+        {"section": "EE Section B", "lab_course_instructor": "M. Ibrar Khan"},
+        {"section": "EE Section C", "lab_course_instructor": "Tooba Azhar"}
+      ]
+    },
+    {
+      "course_name": "Electronics Circuits Design Lab",
+      "course_code": "EL2001",
+      "sections": [
+        {"section": "EE Section A", "lab_course_instructor": "Deema Zargoon"}
+      ]
+    },
+    {
+      "course_name": "Data Communication & Networks Lab",
+      "course_code": "EL2007",
+      "sections": [
+        {"section": "EE Section A", "lab_course_instructor": "Tooba Azhar"},
+        {"section": "EE Section B", "lab_course_instructor": "Tooba Azhar"}
+      ]
+    },
+    {
+      "course_name": "Applied Machine Learning Lab",
+      "course_code": "AL4003",
+      "sections": [
+        {"section": "EE Section A", "lab_course_instructor": "Fasih Ahmad"}
+      ]
+    },
+    {
+      "course_name": "Instrumentation and Measurements Lab",
+      "course_code": "EL2031",
+      "sections": [
+        {"section": "EE Section A", "lab_course_instructor": "Ms. Maria (Vis)"}
+      ]
+    },
+    {
+      "course_name": "Embedded Systems Lab",
+      "course_code": "EL3006",
+      "sections": [
+        {"section": "EE Section A", "lab_course_instructor": "Fasih Ahmad"}
+      ]
+    },
+    {
+      "course_name": "Database Systems Lab",
+      "course_code": "CL3020",
+      "sections": [
+        {"section": "EE Section A", "lab_course_instructor": "M. Ibrar Khan"}
+      ]
+    }
   ]
 };
 
@@ -1025,5 +1615,60 @@ export const courseAliases = {
   'mlops': 'MLOPS',
   'deep learning': 'Deep Learning for Perception',
   'hpc': 'High Performance Computing with GPUs',
-  'gpu': 'High Performance Computing with GPUs'
+  'gpu': 'High Performance Computing with GPUs',
+  
+  // EE Department Course Aliases
+  'applied calculus': 'Applied Calculus',
+  'calculus': 'Applied Calculus',
+  'islamic studies': 'Islamic Studies/Ethics',
+  'ethics': 'Islamic Studies/Ethics',
+  'seerat': 'Understanding of Seerat un Nabi',
+  'ict': 'Applications of ICT',
+  'applied physics': 'Applied Physics',
+  'physics': 'Applied Physics',
+  'english': 'English Language',
+  'health safety': 'Occupational Health and Safety',
+  'safety': 'Occupational Health and Safety',
+  'pakistan constitution': 'Ideology and Constitution of Pakistan',
+  'ideology': 'Ideology and Constitution of Pakistan',
+  'circuit analysis': 'Linear Circuit Analysis',
+  'linear algebra': 'Linear Algebra & Differential Equations',
+  'differential equations': 'Linear Algebra & Differential Equations',
+  'data structures': 'Object Oriented Data Structures',
+  'network analysis': 'Electrical Network Analysis',
+  'electrical network': 'Electrical Network Analysis',
+  'electronics devices': 'Electronics Devices Circuits',
+  'electronics circuits': 'Electronics Devices Circuits',
+  'complex variable': 'Complex-Variable & Transforms',
+  'transforms': 'Complex-Variable & Transforms',
+  'multivariable': 'Multivariable Calculus',
+  'microprocessor': 'Microprocessor Interfacing & Programming',
+  'electromagnetic': 'Electromagnetic Theory',
+  'communications': 'Analog & Digital Communications',
+  'analog digital': 'Analog & Digital Communications',
+  'thermodynamics': 'Applied Thermodynamics',
+  'circuits design': 'Electronics Circuits Design',
+  'data communication': 'Data Communication & Networks',
+  'networks': 'Data Communication & Networks',
+  'engineering management': 'Engineering Management',
+  'management': 'Engineering Management',
+  'business writing': 'Technical and Business Writing',
+  'technical writing': 'Technical and Business Writing',
+  'fyp': 'Final Year Project – I',
+  'final year project': 'Final Year Project – I',
+  'applied ml': 'Applied Machine Learning',
+  'instrumentation': 'Instrumentation and Measurements',
+  'measurements': 'Instrumentation and Measurements',
+  'embedded': 'Embedded Systems',
+  'embedded systems': 'Embedded Systems',
+  'advanced ml': 'Advanced Machine Learning',
+  'network security': 'Advanced Network Security',
+  'security': 'Advanced Network Security',
+  'optimization': 'Engineering Optimization',
+  'digital circuits': 'Digital Integrated Circuits',
+  'integrated circuits': 'Digital Integrated Circuits',
+  'analog discrete': 'Analog and Discrete Electronics',
+  'vlsi': 'VSLI Design Verification & Testing',
+  'verification testing': 'VSLI Design Verification & Testing',
+  'research methodology': 'Research Methodology'
 }; 

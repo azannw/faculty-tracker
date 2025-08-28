@@ -102,6 +102,40 @@ function App() {
           }
         }
       }
+      
+      // Search EE department courses
+      if (courseData.ee_department) {
+        for (const course of courseData.ee_department) {
+          if (course.sections) {
+            for (const section of course.sections) {
+              if (section.teacher_name === facultyName) {
+                courses.push({
+                  name: course.course_name || 'Unknown Course',
+                  section: section.section || 'Unknown Section',
+                  type: 'Theory'
+                });
+              }
+            }
+          }
+        }
+      }
+      
+      // Search EE lab courses
+      if (courseData.ee_lab) {
+        for (const course of courseData.ee_lab) {
+          if (course.sections) {
+            for (const section of course.sections) {
+              if (section.lab_course_instructor === facultyName) {
+                courses.push({
+                  name: course.course_name || 'Unknown Course',
+                  section: section.section || 'Unknown Section',
+                  type: 'Lab'
+                });
+              }
+            }
+          }
+        }
+      }
     } catch (error) {
       console.warn('Error getting course info:', error);
     }
@@ -222,24 +256,25 @@ function App() {
     const addedSuggestions = new Set();
     const matchedCourse = courseAliases[queryLower];
     
-    // Course suggestions first
-    if (matchedCourse) {
-      for (const faculty of allFaculty) {
-        if (faculty.courses && faculty.courses.length > 0) {
-          for (const course of faculty.courses) {
-            if (course.name && course.name.toLowerCase().includes(matchedCourse.toLowerCase())) {
-              const suggestionKey = `${faculty.name || 'unknown'}-${faculty.email || 'unknown'}`;
-              if (!addedSuggestions.has(suggestionKey)) {
-                addedSuggestions.add(suggestionKey);
-                results.push({ ...faculty, searchScore: 1500, matchType: 'course' });
-                if (results.length >= 4) break;
+          // Course suggestions first - search all course categories
+      if (matchedCourse) {
+        // Search in existing faculty courses (from theory, lab, ee_department, ee_lab)
+        for (const faculty of allFaculty) {
+          if (faculty.courses && faculty.courses.length > 0) {
+            for (const course of faculty.courses) {
+              if (course.name && course.name.toLowerCase().includes(matchedCourse.toLowerCase())) {
+                const suggestionKey = `${faculty.name || 'unknown'}-${faculty.email || 'unknown'}`;
+                if (!addedSuggestions.has(suggestionKey)) {
+                  addedSuggestions.add(suggestionKey);
+                  results.push({ ...faculty, searchScore: 1500, matchType: 'course' });
+                  if (results.length >= 4) break;
+                }
               }
             }
+            if (results.length >= 4) break;
           }
-          if (results.length >= 4) break;
         }
       }
-    }
     
     // Faculty name suggestions
     if (results.length < 6) {

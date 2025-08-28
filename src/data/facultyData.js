@@ -1470,5 +1470,241 @@ export const facultyData = [
         "office#": "N/A"
       }
     ]
+  },
+  {
+    "department": "Faculty Department of Electrical Engineering",
+    "faculty": [
+      {
+        "Sr#": 1,
+        "name": "Aamer Hafeez",
+        "designation": "Associate Professor",
+        "email": "aamer.hafeez@nu.edu.pk",
+        "office#": "EE-201"
+      },
+      {
+        "Sr#": 2,
+        "name": "Aamer Munir",
+        "designation": "Assistant Professor",
+        "email": "aamer.munir@nu.edu.pk",
+        "office#": "EE-202"
+      },
+      {
+        "Sr#": 3,
+        "name": "Fakhar Abbas",
+        "designation": "Lecturer",
+        "email": "fakhar.abbas@nu.edu.pk",
+        "office#": "EE-203"
+      },
+      {
+        "Sr#": 4,
+        "name": "Farhan Khalid",
+        "designation": "Assistant Professor",
+        "email": "farhan.khalid@nu.edu.pk",
+        "office#": "EE-204"
+      },
+      {
+        "Sr#": 5,
+        "name": "Hassan Saif",
+        "designation": "Assistant Professor",
+        "email": "hassan.saif@nu.edu.pk",
+        "office#": "EE-205"
+      },
+      {
+        "Sr#": 6,
+        "name": "Irum Saba",
+        "designation": "Assistant Professor",
+        "email": "irum.saba@nu.edu.pk",
+        "office#": "EE-206"
+      },
+      {
+        "Sr#": 7,
+        "name": "M. Ibrar Khan",
+        "designation": "Lecturer",
+        "email": "ibrar.khan@nu.edu.pk",
+        "office#": "EE-207"
+      },
+      {
+        "Sr#": 8,
+        "name": "Maria Nasir",
+        "designation": "Lecturer",
+        "email": "maria.nasir@nu.edu.pk",
+        "office#": "EE-208"
+      },
+      {
+        "Sr#": 9,
+        "name": "Muhammad Awais",
+        "designation": "Assistant Professor",
+        "email": "muhammad.awais@nu.edu.pk",
+        "office#": "EE-209"
+      },
+      {
+        "Sr#": 10,
+        "name": "Muhammad Saeed",
+        "designation": "Associate Professor",
+        "email": "muhammad.saeed@nu.edu.pk",
+        "office#": "EE-210"
+      },
+      {
+        "Sr#": 11,
+        "name": "Muhammad Tariq",
+        "designation": "Assistant Professor",
+        "email": "muhammad.tariq@nu.edu.pk",
+        "office#": "EE-211"
+      },
+      {
+        "Sr#": 12,
+        "name": "Niaz Ahmed",
+        "designation": "Assistant Professor",
+        "email": "niaz.ahmed@nu.edu.pk",
+        "office#": "EE-212"
+      },
+      {
+        "Sr#": 13,
+        "name": "Rashad Ramzan",
+        "designation": "Professor",
+        "email": "rashad.ramzan@nu.edu.pk",
+        "office#": "EE-213"
+      },
+      {
+        "Sr#": 14,
+        "name": "Sana Saleh",
+        "designation": "Lecturer",
+        "email": "sana.saleh@nu.edu.pk",
+        "office#": "EE-214"
+      },
+      {
+        "Sr#": 15,
+        "name": "Shahid Qureshi",
+        "designation": "Assistant Professor",
+        "email": "shahid.qureshi@nu.edu.pk",
+        "office#": "EE-215"
+      },
+      {
+        "Sr#": 16,
+        "name": "Shahzad Saleem",
+        "designation": "Associate Professor",
+        "email": "shahzad.saleem@nu.edu.pk",
+        "office#": "EE-216"
+      },
+      {
+        "Sr#": 17,
+        "name": "Shehzad Ahmad",
+        "designation": "Lecturer",
+        "email": "shehzad.ahmad@nu.edu.pk",
+        "office#": "EE-217"
+      },
+      {
+        "Sr#": 18,
+        "name": "Waseem Ikram",
+        "designation": "Assistant Professor",
+        "email": "waseem.ikram@nu.edu.pk",
+        "office#": "EE-218"
+      },
+      {
+        "Sr#": 19,
+        "name": "Al Bara Shalaby",
+        "designation": "Assistant Professor",
+        "email": "albara.shalaby@nu.edu.pk",
+        "office#": "EE-219"
+      },
+      {
+        "Sr#": 20,
+        "name": "Farah Asif",
+        "designation": "Lecturer",
+        "email": "farah.asif@nu.edu.pk",
+        "office#": "EE-220"
+      },
+      {
+        "Sr#": 21,
+        "name": "Mehmood-ul-Hassan",
+        "designation": "Associate Professor",
+        "email": "mehmood.hassan@nu.edu.pk",
+        "office#": "EE-221"
+      },
+      {
+        "Sr#": 22,
+        "name": "Irfan Shah",
+        "designation": "Assistant Professor",
+        "email": "irfan.shah@nu.edu.pk",
+        "office#": "EE-222"
+      },
+      {
+        "Sr#": 23,
+        "name": "M. Waqar Ahmad",
+        "designation": "Assistant Professor",
+        "email": "waqar.ahmad@nu.edu.pk",
+        "office#": "EE-223"
+      },
+      {
+        "Sr#": 24,
+        "name": "Shahzad Ahmed",
+        "designation": "Lecturer",
+        "email": "shahzad.ahmed@nu.edu.pk",
+        "office#": "EE-224"
+      },
+      {
+        "Sr#": 25,
+        "name": "Dilnawaz Ahmad",
+        "designation": "Lecturer",
+        "email": "dilnawaz.ahmad@nu.edu.pk",
+        "office#": "EE-225"
+      },
+      {
+        "Sr#": 26,
+        "name": "Ms. Amna Hafeez",
+        "designation": "Lecturer",
+        "email": "amna.hafeez@nu.edu.pk",
+        "office#": "EE-226"
+      },
+      {
+        "Sr#": 27,
+        "name": "Ms. Madiha",
+        "designation": "Lecturer",
+        "email": "madiha@nu.edu.pk",
+        "office#": "EE-227"
+      },
+      {
+        "Sr#": 28,
+        "name": "Mr Hasham",
+        "designation": "Lecturer",
+        "email": "hasham@nu.edu.pk",
+        "office#": "EE-228"
+      },
+      {
+        "Sr#": 29,
+        "name": "Mr. Baber Ejaz.",
+        "designation": "Lecturer",
+        "email": "baber.ejaz@nu.edu.pk",
+        "office#": "EE-229"
+      },
+      {
+        "Sr#": 30,
+        "name": "Ms. Ghazal",
+        "designation": "Lecturer",
+        "email": "ghazal@nu.edu.pk",
+        "office#": "EE-230"
+      },
+      {
+        "Sr#": 31,
+        "name": "Ms. Maria (Vis)",
+        "designation": "Visiting Lecturer",
+        "email": "maria.vis@nu.edu.pk",
+        "office#": "EE-231"
+      },
+      {
+        "Sr#": 32,
+        "name": "Dr. Khurram",
+        "designation": "Associate Professor",
+        "email": "khurram@nu.edu.pk",
+        "office#": "EE-232"
+      },
+      {
+        "Sr#": 33,
+        "name": "Usman Ashraf",
+        "designation": "Lecturer",
+        "email": "usman.ashraf@nu.edu.pk",
+        "office#": "EE-233"
+      }
+    ]
   }
 ]; 
