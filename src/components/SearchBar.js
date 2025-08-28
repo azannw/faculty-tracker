@@ -101,7 +101,7 @@ const SearchBar = ({ onSearch, suggestions, showSuggestions, onSuggestionClick, 
           onKeyDown={handleKeyDown}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setTimeout(() => setIsFocused(false), 150)}
-          placeholder="Search faculty or courses (e.g., 'Programming Fundamentals', 'Dr. Ahmad')"
+          placeholder="Search faculty or courses..."
           className="w-full pl-12 pr-12 py-4 text-lg text-gray-900 bg-white border-2 border-gray-300 rounded-2xl focus:border-slate-500 focus:ring-4 focus:ring-slate-200 focus:outline-none placeholder-gray-500"
           style={{ fontSize: '16px' }} // Prevent zoom on iOS
         />

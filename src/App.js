@@ -10,7 +10,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [debouncedQuery, setDebouncedQuery] = useState('');
   const [viewMode, setViewMode] = useState('grid');
-  const [sortBy, setSortBy] = useState('name');
+
   const [hasSearched, setHasSearched] = useState(false);
   const debounceRef = useRef(null);
 
@@ -166,18 +166,7 @@ function App() {
   // Optimized search with early returns and limits
   const filteredFaculty = useMemo(() => {
     if (!debouncedQuery.trim()) {
-      return allFaculty.slice().sort((a, b) => {
-        switch (sortBy) {
-          case 'name':
-            return (a.name || '').localeCompare(b.name || '');
-          case 'department':
-            return (a.department || '').localeCompare(b.department || '');
-          case 'designation':
-            return (a.designation || '').localeCompare(b.designation || '');
-          default:
-            return 0;
-        }
-      });
+      return allFaculty.slice().sort((a, b) => (a.name || '').localeCompare(b.name || ''));
     }
 
     const results = [];
@@ -245,7 +234,7 @@ function App() {
     }
     
     return results.sort((a, b) => b.searchScore - a.searchScore);
-  }, [allFaculty, debouncedQuery, sortBy, fuzzyMatch]);
+  }, [allFaculty, debouncedQuery, fuzzyMatch]);
 
   // Optimized suggestions with limits
   const suggestions = useMemo(() => {
@@ -400,16 +389,6 @@ function App() {
               </div>
 
               <div className="flex items-center space-x-3 sm:space-x-4">
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="px-3 py-2 sm:px-4 bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500 text-sm"
-                >
-                  <option value="name">Sort by Name</option>
-                  <option value="department">Sort by Department</option>
-                  <option value="designation">Sort by Position</option>
-                </select>
-
                 <div className="flex items-center bg-gray-100 rounded-lg p-1">
                   <button
                     onClick={() => setViewMode('grid')}
@@ -454,7 +433,7 @@ function App() {
                 <div className="text-4xl sm:text-6xl mb-4 sm:mb-6">🔍</div>
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">No Results Found</h3>
                 <p className="text-gray-600 mb-6 sm:mb-8 px-4">
-                  No faculty found for "{debouncedQuery}". Try searching for names or courses like "Programming Fundamentals".
+                  No faculty found for "{debouncedQuery}". Try searching for faculty names or course names.
                 </p>
                 <button
                   onClick={handleClearSearch}
