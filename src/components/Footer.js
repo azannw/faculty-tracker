@@ -3,7 +3,7 @@ import { FaYoutube, FaLinkedin, FaWhatsapp } from "react-icons/fa6";
 
 const Footer = ({ darkMode }) => {
   const links = [
-    { icon: <FaLinkedin size={20} />, href: "https://linkedin.com/in/azannw", label: "LinkedIn" },
+    { icon: <FaLinkedin size={20} />, href: "https://linkedin.com/in/azanw", label: "LinkedIn" },
     { icon: <FaYoutube size={20} />, href: "https://youtube.com/@csconnectpk", label: "YouTube" },
     { icon: <FaWhatsapp size={20} />, href: "https://chat.whatsapp.com/K1vRPmsHIgxJY842UPUjoB", label: "WhatsApp" }
   ];
