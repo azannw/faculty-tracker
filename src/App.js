@@ -1,453 +1,248 @@
-import React, { useState, useMemo, useCallback, useRef } from 'react';
-import { Users, Grid, List } from 'lucide-react';
-import SearchBar from './components/SearchBar';
-import FacultyCard from './components/FacultyCard';
-import Footer from './components/Footer';
+import React, { useState, useMemo, useEffect } from 'react';
+import { Search, Moon, Sun, Mail, MapPin, Briefcase } from 'lucide-react';
 import { facultyData } from './data/facultyData';
-import { courseData, courseAliases } from './data/courseData';
+import Footer from './components/Footer';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [debouncedQuery, setDebouncedQuery] = useState('');
-  const [viewMode, setViewMode] = useState('grid');
 
-  const [hasSearched, setHasSearched] = useState(false);
-  const debounceRef = useRef(null);
+  // Debounce search
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedQuery(searchQuery);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
 
-  // Debounced search for better performance
-  const handleSearchInput = useCallback((query) => {
-    setSearchQuery(query);
-    
-    if (debounceRef.current) {
-      clearTimeout(debounceRef.current);
-    }
-    
-    debounceRef.current = setTimeout(() => {
-      setDebouncedQuery(query);
-      if (query.trim()) {
-        setHasSearched(true);
-      }
-    }, 150); // Reduced debounce time
-  }, []);
+  // Improved Levenshtein Distance for accurate typo detection
+  const getLevenshteinDistance = (a, b) => {
+    if (a.length === 0) return b.length;
+    if (b.length === 0) return a.length;
 
-  // Optimized fuzzy search function
-  const fuzzyMatch = useCallback((text, query) => {
-    if (!query.trim() || !text) return { matches: false, score: 0 };
-    
-    const textLower = text.toLowerCase();
-    const queryLower = query.toLowerCase().trim();
-    
-    // Exact match gets highest score
-    if (textLower.includes(queryLower)) {
-      return { matches: true, score: 1000 };
-    }
-    
-    // Simple character matching for performance
-    let score = 0;
-    let lastIndex = -1;
-    
-    for (let i = 0; i < queryLower.length; i++) {
-      const charIndex = textLower.indexOf(queryLower[i], lastIndex + 1);
-      if (charIndex === -1) return { matches: false, score: 0 };
-      score += (10 - (charIndex - lastIndex));
-      lastIndex = charIndex;
-    }
-    
-    return { matches: true, score };
-  }, []);
+    const matrix = [];
 
-  // Memoized course info lookup with caching
-  const courseCache = useRef(new Map());
-  
-  const getCourseInfo = useCallback((facultyName) => {
-    if (!facultyName || !courseData) return [];
-    
-    if (courseCache.current.has(facultyName)) {
-      return courseCache.current.get(facultyName);
+    // Increment along the first column of each row
+    for (let i = 0; i <= b.length; i++) {
+      matrix[i] = [i];
     }
-    
-    const courses = [];
-    
-    try {
-      // Search theory courses
-      if (courseData.theory) {
-        for (const course of courseData.theory) {
-          if (course.sections) {
-            for (const section of course.sections) {
-              if (section.teacher_name === facultyName) {
-                courses.push({
-                  name: course.course_name || 'Unknown Course',
-                  section: section.section || 'Unknown Section',
-                  type: 'Theory'
-                });
-              }
-            }
-          }
-        }
-      }
-      
-      // Search lab courses
-      if (courseData.lab) {
-        for (const course of courseData.lab) {
-          if (course.sections) {
-            for (const section of course.sections) {
-              if (section.lab_course_instructor === facultyName) {
-                courses.push({
-                  name: course.course_name || 'Unknown Course',
-                  section: section.section || 'Unknown Section',
-                  type: 'Lab'
-                });
-              }
-            }
-          }
-        }
-      }
-      
-      // Search EE department courses
-      if (courseData.ee_department) {
-        for (const course of courseData.ee_department) {
-          if (course.sections) {
-            for (const section of course.sections) {
-              if (section.teacher_name === facultyName) {
-                courses.push({
-                  name: course.course_name || 'Unknown Course',
-                  section: section.section || 'Unknown Section',
-                  type: 'Theory'
-                });
-              }
-            }
-          }
-        }
-      }
-      
-      // Search EE lab courses
-      if (courseData.ee_lab) {
-        for (const course of courseData.ee_lab) {
-          if (course.sections) {
-            for (const section of course.sections) {
-              if (section.lab_course_instructor === facultyName) {
-                courses.push({
-                  name: course.course_name || 'Unknown Course',
-                  section: section.section || 'Unknown Section',
-                  type: 'Lab'
-                });
-              }
-            }
-          }
-        }
-      }
-    } catch (error) {
-      console.warn('Error getting course info:', error);
-    }
-    
-    courseCache.current.set(facultyName, courses);
-    return courses;
-  }, []);
 
-  // Optimized faculty data processing
-  const allFaculty = useMemo(() => {
-    if (!facultyData || !Array.isArray(facultyData)) return [];
-    
-    const faculty = [];
-    for (const dept of facultyData) {
-      if (dept.faculty && Array.isArray(dept.faculty)) {
-        for (const member of dept.faculty) {
-          faculty.push({
-            ...member,
-            department: dept.department || 'Unknown Department',
-            courses: getCourseInfo(member.name)
-          });
+    // Increment each column in the first row
+    for (let j = 0; j <= a.length; j++) {
+      matrix[0][j] = j;
+    }
+
+    // Fill in the rest of the matrix
+    for (let i = 1; i <= b.length; i++) {
+      for (let j = 1; j <= a.length; j++) {
+        if (b.charAt(i - 1) === a.charAt(j - 1)) {
+          matrix[i][j] = matrix[i - 1][j - 1];
+        } else {
+          matrix[i][j] = Math.min(
+            matrix[i - 1][j - 1] + 1, // substitution
+            Math.min(matrix[i][j - 1] + 1, // insertion
+            matrix[i - 1][j] + 1) // deletion
+          );
         }
       }
     }
-    return faculty;
-  }, [getCourseInfo]);
 
-  // Optimized search with early returns and limits
+    return matrix[b.length][a.length];
+  };
+
+  // Smart Search Logic
+  const smartSearch = (text, query) => {
+    if (!text || !query) return { matches: false, score: 0 };
+    const str = text.toLowerCase();
+    const q = query.toLowerCase().trim();
+    
+    // 1. Exact substring match (Highest priority)
+    // This satisfies: "if I'm writing majid only people with names that have majid should come"
+    if (str.includes(q)) return { matches: true, score: 100 };
+    
+    // 2. Intelligent Typo Tolerance
+    // Only checks individual words to prevent random long-string partial matches
+    const words = str.split(/[ \-\.]+/); // Split by space, hyphen, dot
+    const queryWords = q.split(' ');
+
+    for (const qWord of queryWords) {
+      if (qWord.length < 3) continue; // Don't fuzzy match very short queries
+
+      for (const word of words) {
+        // Optimization: Length diff too big = strictly no match
+        if (Math.abs(word.length - qWord.length) > 2) continue; 
+
+        const dist = getLevenshteinDistance(word, qWord);
+        
+        // Allowed errors based on length:
+        // 3-5 chars: 1 error allowed
+        // >5 chars: 2 errors allowed
+        const allowedErrors = qWord.length > 5 ? 2 : 1;
+
+        if (dist <= allowedErrors) {
+          // Score matches: Exact substring > Typo match
+          return { matches: true, score: 80 - (dist * 10) };
+        }
+      }
+    }
+    
+    return { matches: false, score: 0 };
+  };
+
+  // Filter and process faculty
   const filteredFaculty = useMemo(() => {
-    if (!debouncedQuery.trim()) {
-      return allFaculty.slice().sort((a, b) => (a.name || '').localeCompare(b.name || ''));
-    }
+    const allFaculty = facultyData.flatMap(dept => 
+      dept.faculty.map(f => ({ ...f, department: dept.department }))
+    );
 
-    const results = [];
-    const queryLower = debouncedQuery.toLowerCase().trim();
-    const addedFaculty = new Set();
-    const matchedCourse = courseAliases[queryLower];
-    
-    for (const faculty of allFaculty) {
-      let maxScore = 0;
-      let hasMatch = false;
-      
-      // Quick name check first (most common search)
-      const nameMatch = fuzzyMatch(faculty.name || '', debouncedQuery);
-      if (nameMatch.matches) {
-        maxScore = nameMatch.score;
-        hasMatch = true;
-      }
-      
-      // Only check other fields if name didn't match
-      if (!hasMatch) {
-        const designationMatch = fuzzyMatch(faculty.designation || '', debouncedQuery);
-        if (designationMatch.matches) {
-          maxScore = Math.max(maxScore, designationMatch.score);
-          hasMatch = true;
-        }
+    if (!debouncedQuery) return allFaculty;
+
+    return allFaculty
+      .map(f => {
+        // Search in Name (Priority)
+        const nameMatch = smartSearch(f.name, debouncedQuery);
         
-        const departmentMatch = fuzzyMatch(faculty.department || '', debouncedQuery);
-        if (departmentMatch.matches) {
-          maxScore = Math.max(maxScore, departmentMatch.score);
-          hasMatch = true;
-        }
+        // Optional: Also search Designation if name doesn't match?
+        // User asked "people with names", so we stick primarily to Name.
+        // But for usefulness, if someone searches "Professor", we might want that.
+        // For now, focusing on the user's specific request about names.
         
-        const emailMatch = fuzzyMatch(faculty.email || '', debouncedQuery);
-        if (emailMatch.matches) {
-          maxScore = Math.max(maxScore, emailMatch.score);
-          hasMatch = true;
-        }
-      }
-      
-      // Course search
-      if (faculty.courses && faculty.courses.length > 0) {
-        for (const course of faculty.courses) {
-          const courseMatch = fuzzyMatch(course.name || '', debouncedQuery);
-          if (courseMatch.matches) {
-            maxScore = Math.max(maxScore, courseMatch.score + 500);
-            hasMatch = true;
-          }
-          
-          if (matchedCourse && course.name && course.name.toLowerCase().includes(matchedCourse.toLowerCase())) {
-            maxScore = Math.max(maxScore, 1500);
-            hasMatch = true;
-          }
-        }
-      }
-      
-      const facultyKey = `${faculty.name || 'unknown'}-${faculty.email || 'unknown'}`;
-      
-      if (hasMatch && !addedFaculty.has(facultyKey)) {
-        addedFaculty.add(facultyKey);
-        results.push({ ...faculty, searchScore: maxScore });
-        
-        // Limit results for performance
-        if (results.length >= 50) break;
-      }
-    }
-    
-    return results.sort((a, b) => b.searchScore - a.searchScore);
-  }, [allFaculty, debouncedQuery, fuzzyMatch]);
+        return { ...f, score: nameMatch.score, matches: nameMatch.matches };
+      })
+      .filter(f => f.matches)
+      .sort((a, b) => b.score - a.score);
+  }, [debouncedQuery]);
 
-  // Optimized suggestions with limits
-  const suggestions = useMemo(() => {
-    if (!searchQuery.trim() || searchQuery.length < 2) return [];
-    
-    const results = [];
-    const queryLower = searchQuery.toLowerCase().trim();
-    const addedSuggestions = new Set();
-    const matchedCourse = courseAliases[queryLower];
-    
-          // Course suggestions first - search all course categories
-      if (matchedCourse) {
-        // Search in existing faculty courses (from theory, lab, ee_department, ee_lab)
-        for (const faculty of allFaculty) {
-          if (faculty.courses && faculty.courses.length > 0) {
-            for (const course of faculty.courses) {
-              if (course.name && course.name.toLowerCase().includes(matchedCourse.toLowerCase())) {
-                const suggestionKey = `${faculty.name || 'unknown'}-${faculty.email || 'unknown'}`;
-                if (!addedSuggestions.has(suggestionKey)) {
-                  addedSuggestions.add(suggestionKey);
-                  results.push({ ...faculty, searchScore: 1500, matchType: 'course' });
-                  if (results.length >= 4) break;
-                }
-              }
-            }
-            if (results.length >= 4) break;
-          }
-        }
-      }
-    
-    // Faculty name suggestions
-    if (results.length < 6) {
-      for (const faculty of allFaculty) {
-        const nameMatch = fuzzyMatch(faculty.name || '', searchQuery);
-        if (nameMatch.matches) {
-          const suggestionKey = `${faculty.name || 'unknown'}-${faculty.email || 'unknown'}`;
-          if (!addedSuggestions.has(suggestionKey)) {
-            addedSuggestions.add(suggestionKey);
-            results.push({ ...faculty, searchScore: nameMatch.score, matchType: 'faculty' });
-            if (results.length >= 6) break;
-          }
-        }
-      }
-    }
-    
-    return results.sort((a, b) => b.searchScore - a.searchScore).slice(0, 6);
-  }, [searchQuery, allFaculty, fuzzyMatch]);
-
-  const handleSuggestionClick = useCallback((faculty) => {
-    const name = faculty.name || '';
-    setSearchQuery(name);
-    setDebouncedQuery(name);
-    setHasSearched(true);
-  }, []);
-
-  const handleClearSearch = useCallback(() => {
-    setSearchQuery('');
-    setDebouncedQuery('');
-    setHasSearched(false);
-  }, []);
-
-  const shouldShowResults = hasSearched && debouncedQuery.trim();
+  const toggleTheme = () => setDarkMode(!darkMode);
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Header Section */}
-      <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 py-16 sm:py-20">
-          <div className="text-center">
-            <div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
-                Faculty Directory
-              </h1>
-              <p className="text-lg sm:text-xl text-slate-300 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
-                FAST NUCES Islamabad Campus - Find faculty contact information instantly
-              </p>
-            </div>
+    <div className={`min-h-screen transition-colors duration-300 flex flex-col ${darkMode ? 'bg-black text-white' : 'bg-white text-black'}`}>
+      
+      {/* Navbar / Header */}
+      <nav className={`fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center backdrop-blur-md border-b transition-colors duration-300 ${darkMode ? 'border-gray-800 bg-black/80' : 'border-gray-200 bg-white/80'}`}>
+        <h1 className="text-xl font-bold tracking-tighter">Fast Faculty</h1>
+        <button 
+          onClick={toggleTheme}
+          className={`p-2 rounded-full transition-transform hover:scale-110 active:scale-95 ${darkMode ? 'bg-gray-800 text-yellow-400' : 'bg-gray-100 text-gray-900'}`}
+        >
+          {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+        </button>
+      </nav>
 
-            <div className="max-w-2xl mx-auto mb-12 sm:mb-16">
-              <SearchBar
-                onSearch={handleSearchInput}
-                suggestions={suggestions}
-                showSuggestions={suggestions.length > 0 && searchQuery.trim()}
-                onSuggestionClick={handleSuggestionClick}
-                onClearSearch={handleClearSearch}
-                query={searchQuery}
-              />
-            </div>
+      {/* Main Content */}
+      <main className="flex-grow pt-32 px-4 max-w-4xl mx-auto w-full flex flex-col items-center">
+        
+        {/* Hero Section */}
+        <div className={`text-center w-full transition-all duration-500 ease-in-out ${debouncedQuery ? 'mt-0 mb-8' : 'mt-[15vh] mb-0'}`}>
+          <h2 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
+            Find Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">Faculty</span>
+          </h2>
+          
+          <div className={`transition-all duration-500 ${debouncedQuery ? 'h-0 opacity-0 overflow-hidden' : 'h-auto opacity-100 mb-10'}`}>
+            <p className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed opacity-80 px-4">
+              Instantly access faculty office numbers, official emails, and designations.
+              <br className="hidden md:block" />
+              Simplify your connection with the FAST NUCES faculty.
+            </p>
+          </div>
 
-            {/* Features */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto px-4">
-              <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-slate-700">
-                <div className="h-8 w-8 mx-auto mb-3 sm:mb-4 text-blue-400">
-                  <Users className="h-8 w-8" />
-                </div>
-                <h3 className="text-base sm:text-lg font-semibold mb-2">Fast Search</h3>
-                <p className="text-slate-400 text-sm">
-                  Instant results for names and courses
-                </p>
+          <div className="relative max-w-xl mx-auto group z-10 w-full">
+            <div className={`absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
+              <Search size={20} />
+            </div>
+            <input
+              type="text"
+              placeholder="Search faculty by name..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className={`w-full py-4 pl-12 pr-4 rounded-2xl text-lg outline-none border-2 transition-all duration-300 shadow-lg ${
+                darkMode 
+                  ? 'bg-gray-900 border-gray-800 text-white focus:border-blue-500 focus:shadow-blue-500/20' 
+                  : 'bg-gray-50 border-gray-200 text-gray-900 focus:border-blue-500 focus:shadow-blue-500/10'
+              }`}
+            />
+          </div>
+
+          {/* Feature Badges - Only shown when not searching */}
+          <div className={`transition-all duration-500 delay-100 ${debouncedQuery ? 'h-0 opacity-0 overflow-hidden mt-0' : 'h-auto opacity-100 mt-12'}`}>
+            <div className="flex flex-wrap justify-center gap-4 opacity-60">
+              <div className={`flex items-center gap-2 px-4 py-2 rounded-full border text-sm ${darkMode ? 'border-gray-800 bg-gray-900/50' : 'border-gray-200 bg-gray-50'}`}>
+                <MapPin size={16} className="text-green-500" />
+                <span>Office Locations</span>
               </div>
-              
-              <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-slate-700">
-                <div className="h-8 w-8 mx-auto mb-3 sm:mb-4 text-green-400">
-                  <Grid className="h-8 w-8" />
-                </div>
-                <h3 className="text-base sm:text-lg font-semibold mb-2">Course Details</h3>
-                <p className="text-slate-400 text-sm">
-                  View teaching assignments and sections
-                </p>
+              <div className={`flex items-center gap-2 px-4 py-2 rounded-full border text-sm ${darkMode ? 'border-gray-800 bg-gray-900/50' : 'border-gray-200 bg-gray-50'}`}>
+                <Mail size={16} className="text-blue-500" />
+                <span>Official Emails</span>
               </div>
-              
-              <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-slate-700 sm:col-span-2 lg:col-span-1">
-                <div className="h-8 w-8 mx-auto mb-3 sm:mb-4 text-orange-400">
-                  <List className="h-8 w-8" />
-                </div>
-                <h3 className="text-base sm:text-lg font-semibold mb-2">Contact Info</h3>
-                <p className="text-slate-400 text-sm">
-                  Office locations and email addresses
-                </p>
+              <div className={`flex items-center gap-2 px-4 py-2 rounded-full border text-sm ${darkMode ? 'border-gray-800 bg-gray-900/50' : 'border-gray-200 bg-gray-50'}`}>
+                <Briefcase size={16} className="text-purple-500" />
+                <span>Designations</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Results Section */}
-      {shouldShowResults && (
-        <div>
-          {/* Controls */}
-          <div className="max-w-7xl mx-auto px-4 py-6 sm:py-8">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0 bg-white rounded-lg p-4 sm:p-6 shadow-sm border">
-              <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
-                <div className="flex items-center space-x-2">
-                  <Users className="h-5 w-5 text-gray-500" />
-                  <span className="text-base sm:text-lg font-medium text-gray-900">
-                    {filteredFaculty.length} Results
-                  </span>
+        {/* Results Grid - Only shown when searching */}
+        {debouncedQuery && (
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 pb-20 animate-in">
+            {filteredFaculty.map((faculty, idx) => (
+              <div 
+                key={idx}
+                className={`group relative p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 ${
+                  darkMode 
+                    ? 'bg-gray-900/50 border-gray-800 hover:border-gray-700 hover:bg-gray-900' 
+                    : 'bg-white border-gray-100 hover:border-gray-200 hover:shadow-xl shadow-sm'
+                }`}
+              >
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <h3 className="text-xl font-bold mb-1">{faculty.name}</h3>
+                    <div className={`flex items-center text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                      <Briefcase size={14} className="mr-1.5" />
+                      {faculty.designation}
+                    </div>
+                  </div>
+                  {/* Department Badge REMOVED here as requested */}
                 </div>
-                
-                {debouncedQuery && (
-                  <span className="text-sm text-gray-500">
-                    for "{debouncedQuery}"
-                  </span>
-                )}
 
-                <button
-                  onClick={handleClearSearch}
-                  className="px-3 py-2 sm:px-4 bg-slate-800 text-white rounded-lg hover:bg-slate-700 text-sm"
-                >
-                  Clear Search
-                </button>
-              </div>
-
-              <div className="flex items-center space-x-3 sm:space-x-4">
-                <div className="flex items-center bg-gray-100 rounded-lg p-1">
-                  <button
-                    onClick={() => setViewMode('grid')}
-                    className={`p-2 rounded-md ${
-                      viewMode === 'grid' ? 'bg-white text-slate-600 shadow-sm' : 'text-gray-500'
-                    }`}
-                  >
-                    <Grid className="h-4 w-4" />
-                  </button>
-                  <button
-                    onClick={() => setViewMode('list')}
-                    className={`p-2 rounded-md ${
-                      viewMode === 'list' ? 'bg-white text-slate-600 shadow-sm' : 'text-gray-500'
-                    }`}
-                  >
-                    <List className="h-4 w-4" />
-                  </button>
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center text-sm opacity-80">
+                    <Mail size={16} className="mr-2 text-blue-500" />
+                    <span className="truncate">{faculty.email}</span>
+                  </div>
+                  <div className="flex items-center text-sm opacity-80">
+                    <MapPin size={16} className="mr-2 text-green-500" />
+                    <span>{faculty['office#'] === 'N/A' ? 'Office Not Assigned' : faculty['office#']}</span>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
 
-          {/* Faculty Grid */}
-          <div className="max-w-7xl mx-auto px-4 pb-20">
-            {filteredFaculty.length > 0 ? (
-              <div className={`grid gap-4 sm:gap-6 ${
-                viewMode === 'grid' 
-                  ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' 
-                  : 'grid-cols-1'
-              }`}>
-                {filteredFaculty.map((faculty, index) => (
-                  <FacultyCard
-                    key={`${faculty.name || 'unknown'}-${faculty.department || 'unknown'}-${index}`}
-                    faculty={faculty}
-                    department={faculty.department}
-                    index={index}
-                  />
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-16 sm:py-20">
-                <div className="text-4xl sm:text-6xl mb-4 sm:mb-6">🔍</div>
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">No Results Found</h3>
-                <p className="text-gray-600 mb-6 sm:mb-8 px-4">
-                  No faculty found for "{debouncedQuery}". Try searching for faculty names or course names.
-                </p>
-                <button
-                  onClick={handleClearSearch}
-                  className="px-6 py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-700"
+                <a
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${faculty.email}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center justify-center w-full py-2.5 rounded-xl font-medium transition-all duration-300 ${
+                    darkMode 
+                      ? 'bg-white text-black hover:bg-gray-200' 
+                      : 'bg-black text-white hover:bg-gray-800'
+                  }`}
                 >
-                  Clear Search
-                </button>
+                  <Mail size={18} className="mr-2" />
+                  Send Email
+                </a>
+              </div>
+            ))}
+            
+            {filteredFaculty.length === 0 && (
+              <div className="col-span-full text-center py-20 opacity-50">
+                <p className="text-xl">No faculty found matches "{debouncedQuery}"</p>
               </div>
             )}
           </div>
-        </div>
-      )}
+        )}
+      </main>
 
-      <Footer />
+      <Footer darkMode={darkMode} />
     </div>
   );
 }

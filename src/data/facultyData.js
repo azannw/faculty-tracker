@@ -5,7 +5,7 @@ export const facultyData = [
       {
         "Sr#": "Sr #",
         "name": "Dr. Hasan Mujtaba",
-        "designation": "Professor & Head, FSc",
+        "designation": "Professor & Head, FSC",
         "email": "hasan.mujtaba@nu.edu.pk",
         "office#": "C-201 A"
       },
@@ -18,108 +18,108 @@ export const facultyData = [
       },
       {
         "Sr#": 2,
-        "name": "Dr. Hammad Majeed",
-        "designation": "Professor & Director, QEC",
-        "email": "hammad.majeed@nu.edu.pk",
-        "office#": "D-113 D"
-      },
-      {
-        "Sr#": 3,
         "name": "Dr. Ahmad Raza Shahid",
         "designation": "Professor",
         "email": "ahmadraza.shahid@nu.edu.pk",
         "office#": "D-113 F"
       },
       {
+        "Sr#": 3,
+        "name": "Dr. Hammad Majeed",
+        "designation": "Professor & Director, QEC",
+        "email": "hammad.majeed@nu.edu.pk",
+        "office#": "D-113 D"
+      },
+      {
         "Sr#": 4,
-        "name": "Dr. Ejaz Ahmed",
-        "designation": "Associate Professor",
-        "email": "ejaz.ahmed@nu.edu.pk",
-        "office#": "C-202 E"
-      },
-      {
-        "Sr#": 5,
-        "name": "Dr. Labiba Fahad",
-        "designation": "Associate Professor",
-        "email": "labiba.fahad@nu.edu.pk",
-        "office#": "D-113 A"
-      },
-      {
-        "Sr#": 6,
         "name": "Dr. Akhtar Jamil",
         "designation": "Associate Professor & Coordinator GSC",
         "email": "akhtar.jamil@nu.edu.pk",
         "office#": "D-113 C"
       },
       {
-        "Sr#": 7,
+        "Sr#": 5,
+        "name": "Dr. Ejaz Ahmed",
+        "designation": "Associate Professor",
+        "email": "ejaz.ahmed@nu.edu.pk",
+        "office#": "C-202 E"
+      },
+      {
+        "Sr#": 6,
         "name": "Dr. Imran Ashraf",
         "designation": "Associate Professor",
         "email": "imran.ashraf@isb.nu.edu.pk",
         "office#": "C-205 E"
       },
       {
-        "Sr#": 8,
-        "name": "Dr. Danish Shehzad",
+        "Sr#": 7,
+        "name": "Dr. Labiba Fahad",
         "designation": "Associate Professor",
-        "email": "danish.shehzad@isb.nu.edu.pk",
-        "office#": "C-203 E"
+        "email": "labiba.fahad@nu.edu.pk",
+        "office#": "D-113 A"
+      },
+      {
+        "Sr#": 8,
+        "name": "Dr. Afia Zafar",
+        "designation": "Assistant Professor",
+        "email": "afia.zafar@isb.nu.edu.pk",
+        "office#": "D-109 A"
       },
       {
         "Sr#": 9,
-        "name": "Dr. Faisal Cheema",
-        "designation": "Assistant Professor",
-        "email": "faisal.cheema@nu.edu.pk",
-        "office#": "C-502 E"
-      },
-      {
-        "Sr#": 10,
-        "name": "Dr. Mehreen Alam",
-        "designation": "Assistant Professor",
-        "email": "mehreen.alam@nu.edu.pk",
-        "office#": "D-110 E"
-      },
-      {
-        "Sr#": 11,
         "name": "Dr. Ali Zeeshan Ijaz",
         "designation": "Assistant Professor",
         "email": "ali.zeeshan@isb.nu.edu.pk",
         "office#": "D-110 D"
       },
       {
-        "Sr#": 12,
-        "name": "Dr. Syed Qaiser Ali Shah",
-        "designation": "Assistant Professor",
-        "email": "qaiser.ali@isb.nu.edu.pk",
-        "office#": "D-109 D"
-      },
-      {
-        "Sr#": 13,
-        "name": "Dr. Hina Ayaz",
-        "designation": "Assistant Professor",
-        "email": "hina.ayaz@isb.nu.edu.pk",
-        "office#": "D-111 E"
-      },
-      {
-        "Sr#": 14,
-        "name": "Dr. Tajwar Mehmood",
-        "designation": "Assistant Professor",
-        "email": "tajwar.mehmood@nu.edu.pk",
-        "office#": "D-112 D"
-      },
-      {
-        "Sr#": 15,
+        "Sr#": 10,
         "name": "Dr. Basharat Hussain",
         "designation": "Assistant Professor",
         "email": "basharat.hussain@isb.nu.edu.pk",
         "office#": "D-113 E"
       },
       {
-        "Sr#": 16,
-        "name": "Ms. Noor ul Ain",
+        "Sr#": 11,
+        "name": "Dr. Faisal Cheema",
         "designation": "Assistant Professor",
-        "email": "noorul.ain@nu.edu.pk",
-        "office#": "C-205 G"
+        "email": "faisal.cheema@nu.edu.pk",
+        "office#": "C-502 E"
+      },
+      {
+        "Sr#": 12,
+        "name": "Dr. Hina Ayaz",
+        "designation": "Assistant Professor",
+        "email": "hina.ayaz@isb.nu.edu.pk",
+        "office#": "D-111 E"
+      },
+      {
+        "Sr#": 13,
+        "name": "Dr. Mehreen Alam",
+        "designation": "Assistant Professor",
+        "email": "mehreen.alam@nu.edu.pk",
+        "office#": "D-110 E"
+      },
+      {
+        "Sr#": 14,
+        "name": "Dr. Muhammad Rizwan",
+        "designation": "Assistant Professor",
+        "email": "muhammad.rizwan@isb.nu.edu.pk",
+        "office#": "D-109 H"
+      },
+      {
+        "Sr#": 15,
+        "name": "Dr. Syed Qaiser Ali Shah",
+        "designation": "Assistant Professor",
+        "email": "qaiser.ali@isb.nu.edu.pk",
+        "office#": "D-109 D"
+      },
+      {
+        "Sr#": 16,
+        "name": "Dr. Tajwar Mehmood",
+        "designation": "Assistant Professor",
+        "email": "tajwar.mehmood@nu.edu.pk",
+        "office#": "D-112 D"
       },
       {
         "Sr#": 17,
@@ -130,38 +130,38 @@ export const facultyData = [
       },
       {
         "Sr#": 18,
-        "name": "Mr. Shams Farooq",
-        "designation": "Lecturer",
-        "email": "shams.farooq@nu.edu.pk",
-        "office#": "C-204 F"
+        "name": "Ms. Noor ul Ain",
+        "designation": "Assistant Professor",
+        "email": "noorul.ain@nu.edu.pk",
+        "office#": "C-205 G"
       },
       {
         "Sr#": 19,
-        "name": "Mr. Shehreyar Rashid",
+        "name": "Mr. Aqib Rehman",
         "designation": "Lecturer",
-        "email": "shehreyar.rashid@nu.edu.pk",
-        "office#": "D-111 C"
+        "email": "aqib.rehman@isb.nu.edu.pk",
+        "office#": "C-205 A"
       },
       {
         "Sr#": 20,
-        "name": "Mr. Syed Muhammad Saad Salman",
+        "name": "Mr. Fahad Shafique",
         "designation": "Lecturer",
-        "email": "saad.salman@nu.edu.pk",
-        "office#": "D-112 G"
+        "email": "fahad.shafique@isb.nu.edu.pk",
+        "office#": "C-205 F"
       },
       {
         "Sr#": 21,
-        "name": "Ms. Marium Hida",
+        "name": "Mr. Furqan Nasir",
         "designation": "Lecturer",
-        "email": "marium.hida@nu.edu.pk",
-        "office#": "D-112 C"
+        "email": "furqan.nasir@isb.nu.edu.pk",
+        "office#": "D-111 H"
       },
       {
         "Sr#": 22,
-        "name": "Mr. Muhammad Owais Idrees",
+        "name": "Mr. M. Aadil Ur Rehman",
         "designation": "Lecturer",
-        "email": "owais.idrees@nu.edu.pk",
-        "office#": "C-205 B"
+        "email": "aadil.rehman@isb.nu.edu.pk",
+        "office#": "D-109 B"
       },
       {
         "Sr#": 23,
@@ -172,66 +172,66 @@ export const facultyData = [
       },
       {
         "Sr#": 24,
+        "name": "Mr. Muhammad Aamir Gulzar",
+        "designation": "Lecturer",
+        "email": "aamir.gulzar@nu.edu.pk",
+        "office#": "C-203 G"
+      },
+      {
+        "Sr#": 25,
         "name": "Mr. Muhammad Almas Khan",
         "designation": "Lecturer",
         "email": "muhammad.almas@nu.edu.pk",
         "office#": "D-109 G"
       },
       {
-        "Sr#": 25,
-        "name": "Ms. Nirmal Tariq",
-        "designation": "Lecturer",
-        "email": "nirmal.tariq@nu.edu.pk",
-        "office#": "D-112 F"
-      },
-      {
         "Sr#": 26,
-        "name": "Ms. Urooj Ghani",
-        "designation": "Lecturer",
-        "email": "urooj.ghani@nu.edu.pk",
-        "office#": "D-111 F"
-      },
-      {
-        "Sr#": 27,
-        "name": "Ms. Maryam Shahbaz",
-        "designation": "Lecturer",
-        "email": "maryam.shahbaz@nu.edu.pk",
-        "office#": "D-110 F"
-      },
-      {
-        "Sr#": 28,
         "name": "Mr. Muhammad Farrukh Bashir",
         "designation": "Lecturer",
         "email": "farrukh.bashir@isb.nu.edu.pk",
         "office#": "D-111 G"
       },
       {
-        "Sr#": 29,
-        "name": "Mr. M. Aadil Ur Rehman",
+        "Sr#": 27,
+        "name": "Mr. Muhammad Owais Idrees",
         "designation": "Lecturer",
-        "email": "aadil.rehman@isb.nu.edu.pk",
-        "office#": "D-109 B"
+        "email": "Owais.idrees@nu.edu.pk",
+        "office#": "C-205 B"
+      },
+      {
+        "Sr#": 28,
+        "name": "Mr. Shams Farooq",
+        "designation": "Lecturer",
+        "email": "shams.farooq@nu.edu.pk",
+        "office#": "C-204 F"
+      },
+      {
+        "Sr#": 29,
+        "name": "Mr. Shehreyar Rashid",
+        "designation": "Lecturer",
+        "email": "shehreyar.rashid@nu.edu.pk",
+        "office#": "D-111 C"
       },
       {
         "Sr#": 30,
-        "name": "Mr. Aqib Rehman",
+        "name": "Mr. Syed Muhammad Aqleem Abbas",
         "designation": "Lecturer",
-        "email": "aqib.rehman@isb.nu.edu.pk",
-        "office#": "C-205 A"
+        "email": "aqleem.abbas@isb.nu.edu.pk",
+        "office#": "D-110 B"
       },
       {
         "Sr#": 31,
-        "name": "Ms. Rabail Zahid",
+        "name": "Mr. Syed Muhammad Saad Salman",
         "designation": "Lecturer",
-        "email": "rabail.zahid@isb.nu.edu.pk",
-        "office#": "D-112 B"
+        "email": "saad.salman@nu.edu.pk",
+        "office#": "D-112 G"
       },
       {
         "Sr#": 32,
-        "name": "Mr. Muhammad Aamir Gulzar",
+        "name": "Ms. Bushra Fatima Tariq",
         "designation": "Lecturer",
-        "email": "aamir.gulzar@nu.edu.pk",
-        "office#": "C-203 G"
+        "email": "bushra.fatima@nu.edu.pk",
+        "office#": "D-110 G"
       },
       {
         "Sr#": 33,
@@ -242,143 +242,685 @@ export const facultyData = [
       },
       {
         "Sr#": 34,
-        "name": "Ms. Sana Razzaq",
+        "name": "Ms. Marium Hida",
         "designation": "Lecturer",
-        "email": "sana.razzaq@nu.edu.pk",
-        "office#": "D-205 E"
+        "email": "marium.hida@nu.edu.pk",
+        "office#": "D-112 C"
       },
       {
         "Sr#": 35,
-        "name": "Mr. Syed Muhammad Aqleem Abbas",
+        "name": "Ms. Maryam Shahbaz",
         "designation": "Lecturer",
-        "email": "aqleem.abbas@isb.nu.edu.pk",
-        "office#": "D-110 B"
+        "email": "maryam.shahbaz@nu.edu.pk",
+        "office#": "D-110 F"
       },
       {
         "Sr#": 36,
-        "name": "Mr. Fahad Shafique",
-        "designation": "Lecturer",
-        "email": "fahad.shafique@isb.nu.edu.pk",
-        "office#": "C-205 F"
-      },
-      {
-        "Sr#": 37,
-        "name": "Ms. Bushra Fatima Tariq",
-        "designation": "Lecturer",
-        "email": "bushra.fatima@nu.edu.pk",
-        "office#": "D-110 G"
-      },
-      {
-        "Sr#": 38,
         "name": "Ms. Munazza Nida",
         "designation": "Lecturer",
         "email": "munazza.nida@isb.nu.edu.pk",
         "office#": "D-112 H"
       },
       {
+        "Sr#": 37,
+        "name": "Ms. Nirmal Tariq",
+        "designation": "Lecturer",
+        "email": "nirmal.tariq@nu.edu.pk",
+        "office#": "D-112 F"
+      },
+      {
+        "Sr#": 38,
+        "name": "Ms. Rabail Zahid",
+        "designation": "Lecturer",
+        "email": "rabail.zahid@isb.nu.edu.pk",
+        "office#": "D-112 B"
+      },
+      {
         "Sr#": 39,
-        "name": "Mr. Usama Bin Imran",
-        "designation": "Instructor",
-        "email": "usama.imran@isb.nu.edu.pk",
-        "office#": "N/A"
+        "name": "Ms. Sana Razzaq",
+        "designation": "Lecturer",
+        "email": "sana.razzaq@nu.edu.pk",
+        "office#": "D-109 C"
       },
       {
         "Sr#": 40,
-        "name": "Ms. Hajira Uzair",
-        "designation": "Instructor",
-        "email": "hajira.uzair@isb.nu.edu.pk",
-        "office#": "Margala II"
+        "name": "Ms. Urooj Ghani",
+        "designation": "Lecturer",
+        "email": "urooj.ghani@nu.edu.pk",
+        "office#": "D-111 F"
       },
       {
         "Sr#": 41,
-        "name": "Ms. Amina Ashfaq",
+        "name": "Mr. Abdullah Bin Zahid",
         "designation": "Instructor",
-        "email": "amina.ashfaq@isb.nu.edu.pk",
+        "email": "abdullahbin.zahid@isb.nu.edu.pk",
         "office#": "Rawal II"
       },
       {
         "Sr#": 42,
-        "name": "Ms. Zill-E-Huma",
+        "name": "Mr. Ali Umer",
         "designation": "Instructor",
-        "email": "zille.huma@isb.nu.edu.pk",
-        "office#": "A-307"
+        "email": "ali.umer@isb.nu.edu.pk",
+        "office#": "D-620 G"
       },
       {
         "Sr#": 43,
-        "name": "Ms. Asma Tufail",
-        "designation": "Instructor",
-        "email": "asma.tufail@isb.nu.edu.pk",
-        "office#": "Margala II"
-      },
-      {
-        "Sr#": 44,
         "name": "Mr. Hamza Mahmood Sheikh",
         "designation": "Instructor",
         "email": "hamza.mahmood@isb.nu.edu.pk",
         "office#": "D-513 A"
       },
       {
-        "Sr#": 45,
-        "name": "Ms. Maryam Khalid",
-        "designation": "Instructor",
-        "email": "maryam.khalid@isb.nu.edu.pk",
-        "office#": "A 307"
-      },
-      {
-        "Sr#": 46,
-        "name": "Mr. Muhammad Talha Sharif",
-        "designation": "Instructor",
-        "email": "talha.sharif@isb.nu.edu.pk",
-        "office#": "D-513 B"
-      },
-      {
-        "Sr#": 47,
-        "name": "Mr. Zahoor Ul Hassan",
-        "designation": "Instructor",
-        "email": "zahoor.hassan@isb.nu.edu.pk",
-        "office#": "D-513 C"
-      },
-      {
-        "Sr#": 48,
-        "name": "Ms. Laiba Noor",
-        "designation": "Instructor",
-        "email": "laiba.noor@isb.nu.edu.pk",
-        "office#": "A 307"
-      },
-      {
-        "Sr#": 49,
-        "name": "Mr. Muhammad Ismail",
-        "designation": "Instructor",
-        "email": "muhammad.ismail@isb.nu.edu.pk",
-        "office#": "D-513 B"
-      },
-      {
-        "Sr#": 50,
-        "name": "Mr. Muhammad Hamza",
-        "designation": "Instructor",
-        "email": "muhammad.hamza@isb.nu.edu.pk",
-        "office#": "C-203 A"
-      },
-      {
-        "Sr#": 51,
-        "name": "Ms. Syeda Mahnoor Javed",
-        "designation": "Instructor",
-        "email": "mahnoor.javed@nu.edu.pk",
-        "office#": "C-204 A"
-      },
-      {
-        "Sr#": 52,
+        "Sr#": 44,
         "name": "Mr. Imran Khan",
         "designation": "Instructor",
         "email": "imran.khan@isb.nu.edu.pk",
         "office#": "C-203 A"
       },
       {
+        "Sr#": 45,
+        "name": "Mr. Muhammad Hamza",
+        "designation": "Instructor",
+        "email": "muhammad.hamza@isb.nu.edu.pk",
+        "office#": "C-203 A"
+      },
+      {
+        "Sr#": 46,
+        "name": "Mr. Muhammad Ismail",
+        "designation": "Instructor",
+        "email": "muhammad.ismail@isb.nu.edu.pk",
+        "office#": "D-513 B"
+      },
+      {
+        "Sr#": 47,
+        "name": "Mr. Muhammad Talha Sharif",
+        "designation": "Instructor",
+        "email": "talha.sharif@isb.nu.edu.pk",
+        "office#": "D-513 B"
+      },
+      {
+        "Sr#": 48,
+        "name": "Mr. Muhammad Umair Khalid",
+        "designation": "Instructor",
+        "email": "umair.khalid@isb.nu.edu.pk",
+        "office#": "D-620 G"
+      },
+      {
+        "Sr#": 49,
+        "name": "Mr. Usama Bin Imran",
+        "designation": "Instructor",
+        "email": "usama.imran@isb.nu.edu.pk",
+        "office#": "D-513 F"
+      },
+      {
+        "Sr#": 50,
+        "name": "Mr. Zahoor Ul Hassan",
+        "designation": "Instructor",
+        "email": "zahoor.hassan@isb.nu.edu.pk",
+        "office#": "D-513 C"
+      },
+      {
+        "Sr#": 51,
+        "name": "Ms. Amina Ashfaq",
+        "designation": "Instructor",
+        "email": "amina.ashfaq@isb.nu.edu.pk",
+        "office#": "D-513 E"
+      },
+      {
+        "Sr#": 52,
+        "name": "Ms. Asma Tufail",
+        "designation": "Instructor",
+        "email": "asma.tufail@isb.nu.edu.pk",
+        "office#": "D-513 G"
+      },
+      {
         "Sr#": 53,
+        "name": "Ms. Hajira Uzair",
+        "designation": "Instructor",
+        "email": "hajira.uzair@isb.nu.edu.pk",
+        "office#": "D-513 G"
+      },
+      {
+        "Sr#": 54,
+        "name": "Ms. Laiba Noor",
+        "designation": "Instructor",
+        "email": "laiba.noor@isb.nu.edu.pk",
+        "office#": "C-110 C"
+      },
+      {
+        "Sr#": 55,
+        "name": "Ms. Maryam Khalid",
+        "designation": "Instructor",
+        "email": "maryam.khalid@isb.nu.edu.pk",
+        "office#": "C-110 C"
+      },
+      {
+        "Sr#": 56,
+        "name": "Ms. Syeda Mahnoor Javed",
+        "designation": "Instructor",
+        "email": "mahnoor.javed@nu.edu.pk",
+        "office#": "C-204 A"
+      },
+      {
+        "Sr#": 57,
         "name": "Ms. Tajiya Daarain",
         "designation": "Instructor",
         "email": "tajiya.daarain@isb.nu.edu.pk",
         "office#": "C-204 A"
+      },
+      {
+        "Sr#": 58,
+        "name": "Ms. Zill-E-Huma",
+        "designation": "Instructor",
+        "email": "zille.huma@isb.nu.edu.pk",
+        "office#": "C-110 C"
+      }
+    ]
+  },
+  {
+    "department": "Faculty Department of Artificial Intelligence & Data Science",
+    "faculty": [
+      {
+        "Sr#": 1,
+        "name": "Dr. Ahmad Din",
+        "designation": "Professor & HoD",
+        "email": "ahmad.din@nu.edu.pk",
+        "office#": "D-201 C"
+      },
+      {
+        "Sr#": 2,
+        "name": "Dr. Mirza Omer Beg",
+        "designation": "Professor (Adjunct)",
+        "email": "omer.beg@nu.edu.pk",
+        "office#": "C-205 C"
+      },
+      {
+        "Sr#": 3,
+        "name": "Dr. Muhammad Asif Naeem",
+        "designation": "Professor & Director ORIC",
+        "email": "asif.naeem@nu.edu.pk",
+        "office#": "D-214 C"
+      },
+      {
+        "Sr#": 4,
+        "name": "Dr. Waseem Shahzad",
+        "designation": "Professor & Director",
+        "email": "waseem.shahzad@nu.edu.pk",
+        "office#": "Director office"
+      },
+      {
+        "Sr#": 5,
+        "name": "Dr. Muhammad Ishtiaq",
+        "designation": "Associate Professor",
+        "email": "m.ishtiaq@nu.edu.pk",
+        "office#": "D-214 D"
+      },
+      {
+        "Sr#": 6,
+        "name": "Dr. Mateen Yaqoob",
+        "designation": "Assistant Professor",
+        "email": "mateen.yaqoob@isb.nu.edu.pk",
+        "office#": "D-212 D"
+      },
+      {
+        "Sr#": 7,
+        "name": "Dr. Muhammad Nouman Noor",
+        "designation": "Assistant Professor",
+        "email": "nouman.noor@isb.nu.edu.pk",
+        "office#": "D-202 E"
+      },
+      {
+        "Sr#": 8,
+        "name": "Dr. Noshina Tariq",
+        "designation": "Assistant Professor",
+        "email": "noshina.tariq@isb.nu.edu.pk",
+        "office#": "D-202 D"
+      },
+      {
+        "Sr#": 9,
+        "name": "Dr. Qurat Ul Ain",
+        "designation": "Assistant Professor",
+        "email": "quratul.ain@isb.nu.edu.pk",
+        "office#": "D-212 E"
+      },
+      {
+        "Sr#": 10,
+        "name": "Dr. Zohair Ahmed",
+        "designation": "Assistant Professor",
+        "email": "zohair.ahmed@isb.nu.edu.pk",
+        "office#": "C-203 B"
+      },
+      {
+        "Sr#": 11,
+        "name": "Mr. Adil Majeed",
+        "designation": "Lecturer",
+        "email": "adil.majeed@nu.edu.pk",
+        "office#": "D-204 E"
+      },
+      {
+        "Sr#": 12,
+        "name": "Mr. Ahmad Raza",
+        "designation": "Lecturer",
+        "email": "ahmad.raza@isb.nu.edu.pk",
+        "office#": "D-202 C"
+      },
+      {
+        "Sr#": 13,
+        "name": "Mr. Mohsin Khan",
+        "designation": "Lecturer",
+        "email": "mohsin.khan@isb.nu.edu.pk",
+        "office#": "C-202 G"
+      },
+      {
+        "Sr#": 14,
+        "name": "Mr. Muhammad Sohail Abbas",
+        "designation": "Lecturer",
+        "email": "sohail.abbas@isb.nu.edu.pk",
+        "office#": "D-204 G"
+      },
+      {
+        "Sr#": 15,
+        "name": "Mr. Shahbaz Hassan",
+        "designation": "Lecturer",
+        "email": "shahbaz.hassan@isb.nu.edu.pk",
+        "office#": "D-212 C"
+      },
+      {
+        "Sr#": 16,
+        "name": "Mr. Shoaib Saleem Khattak",
+        "designation": "Lecturer",
+        "email": "shoaib.saleem@nu.edu.pk",
+        "office#": "D-204 H"
+      },
+      {
+        "Sr#": 17,
+        "name": "Mr. Ubaid Ur Rehman",
+        "designation": "Lecturer",
+        "email": "ubaid.rehman@isb.nu.edu.pk",
+        "office#": "D-204 A"
+      },
+      {
+        "Sr#": 18,
+        "name": "Mr. Usama Imtiaz",
+        "designation": "Lecturer",
+        "email": "Usama.Imtiaz@isb.nu.edu.pk",
+        "office#": "D-112 E"
+      },
+      {
+        "Sr#": 19,
+        "name": "Ms. Azka Atiq",
+        "designation": "Lecturer",
+        "email": "azka.atiq@isb.nu.edu.pk",
+        "office#": "C-202 A"
+      },
+      {
+        "Sr#": 20,
+        "name": "Ms. Kainat Iqbal",
+        "designation": "Lecturer",
+        "email": "kainat.Iqbal@isb.nu.edu.pk",
+        "office#": "D-212 F"
+      },
+      {
+        "Sr#": 21,
+        "name": "Ms. Kanza Hamid",
+        "designation": "Lecturer",
+        "email": "kanza.hamid@isb.nu.edu.pk",
+        "office#": "D-204 F"
+      },
+      {
+        "Sr#": 22,
+        "name": "Ms. Khadija Mahmood",
+        "designation": "Lecturer",
+        "email": "khadija.mahmood@nu.edu.pk",
+        "office#": "D-202 H"
+      },
+      {
+        "Sr#": 23,
+        "name": "Ms. Laraib Afzaal",
+        "designation": "Lecturer",
+        "email": "laraib.afzaal@nu.edu.pk",
+        "office#": "D-202 B"
+      },
+      {
+        "Sr#": 24,
+        "name": "Ms. Mahnoor Tariq",
+        "designation": "Lecturer",
+        "email": "mahnoor.tariq@isb.nu.edu.pk",
+        "office#": "D-212 B"
+      },
+      {
+        "Sr#": 25,
+        "name": "Ms. Mariam Bint Imran",
+        "designation": "Lecturer",
+        "email": "mariam.imran@isb.nu.edu.pk",
+        "office#": "D-202 A"
+      },
+      {
+        "Sr#": 26,
+        "name": "Ms. Maryam Sana",
+        "designation": "Lecturer",
+        "email": "maryam.sana@isb.nu.edu.pk",
+        "office#": "C-203 F"
+      },
+      {
+        "Sr#": 27,
+        "name": "Ms. Mehreen Javaid",
+        "designation": "Lecturer",
+        "email": "mehreen.javaid@nu.edu.pk",
+        "office#": "D-202 G"
+      },
+      {
+        "Sr#": 28,
+        "name": "Ms. Saira Qamar",
+        "designation": "Lecturer",
+        "email": "saira.qamar@nu.edu.pk",
+        "office#": "D-212 G"
+      },
+      {
+        "Sr#": 29,
+        "name": "Ms. Umarah Qaseem",
+        "designation": "Lecturer",
+        "email": "umarah.qaseem@isb.nu.edu.pk",
+        "office#": "D-202 F"
+      },
+      {
+        "Sr#": 30,
+        "name": "Ms. Zonera Anjum",
+        "designation": "Lecturer",
+        "email": "zonera.anjum@isb.nu.edu.pk",
+        "office#": "D-204 B"
+      },
+      {
+        "Sr#": 31,
+        "name": "Mr. Muhammad Atif Saeed",
+        "designation": "Lecturer",
+        "email": "atif.saeed@isb.nu.edu.pk",
+        "office#": "D-111 A"
+      },
+      {
+        "Sr#": 32,
+        "name": "Mr. Abdul Hammad Rasheed",
+        "designation": "Instructor",
+        "email": "hammad.rasheed@isb.nu.edu.pk",
+        "office#": "D-513 A"
+      },
+      {
+        "Sr#": 33,
+        "name": "Mr. Abdul Wahab Khan",
+        "designation": "Instructor",
+        "email": "abdul.wahab@isb.nu.edu.pk",
+        "office#": "D-513 C"
+      },
+      {
+        "Sr#": 34,
+        "name": "Mr. Ali Hamza",
+        "designation": "Instructor",
+        "email": "ali.hamza@isb.nu.edu.pk",
+        "office#": "D-513 D"
+      },
+      {
+        "Sr#": 35,
+        "name": "Mr. Muhammad Ammar Masood",
+        "designation": "Instructor",
+        "email": "ammar.masood@isb.nu.edu.pk",
+        "office#": "D-513 A"
+      },
+      {
+        "Sr#": 36,
+        "name": "Mr. Talha Tariq",
+        "designation": "Instructor",
+        "email": "talha.tariq@isb.nu.edu.pk",
+        "office#": "D-513 D"
+      },
+      {
+        "Sr#": 37,
+        "name": "Ms. Maryam Hussain",
+        "designation": "Instructor",
+        "email": "maryam.hussain@isb.nu.edu.pk",
+        "office#": "C-108 A"
+      },
+      {
+        "Sr#": 38,
+        "name": "Ms. Mubrra Asma",
+        "designation": "Instructor",
+        "email": "mubrra.asma@isb.nu.edu.pk",
+        "office#": "C-513 C"
+      },
+      {
+        "Sr#": 39,
+        "name": "Ms. Nabeelah Maryam",
+        "designation": "Instructor",
+        "email": "nabeelah.maryam@isb.nu.edu.pk",
+        "office#": "D-513 F"
+      },
+      {
+        "Sr#": 40,
+        "name": "Ms. Nayyera Wasim",
+        "designation": "Instructor",
+        "email": "nayyera.wasim@isb.nu.edu.pk",
+        "office#": "C-108 A"
+      },
+      {
+        "Sr#": 41,
+        "name": "Ms. Palwasha Zahid",
+        "designation": "Instructor",
+        "email": "palwasha.zahid@isb.nu.edu.pk",
+        "office#": "C-513 B"
+      },
+      {
+        "Sr#": 42,
+        "name": "Ms. Sidra Fayyaz",
+        "designation": "Instructor",
+        "email": "sidra.fayyaz@isb.nu.edu.pk",
+        "office#": "C-513 A"
+      }
+    ]
+  },
+  {
+    "department": "Faculty Department of Software Engineering",
+    "faculty": [
+      {
+        "Sr#": 1,
+        "name": "Dr. Usman Habib",
+        "designation": "Professor & HoD",
+        "email": "usman.habib@nu.edu.pk",
+        "office#": "C-501 C"
+      },
+      {
+        "Sr#": 2,
+        "name": "Dr. Naveed Ahmad",
+        "designation": "Professor (Adjunct)",
+        "email": "naveed.ahmad@nu.edu.pk",
+        "office#": "C-204 C"
+      },
+      {
+        "Sr#": 3,
+        "name": "Dr. Asif Muhammad",
+        "designation": "Assistant Professor",
+        "email": "asif.muhammad@isb.nu.edu.pk",
+        "office#": "D-109 E"
+      },
+      {
+        "Sr#": 4,
+        "name": "Dr. Atif Aftab Ahmed Jilani",
+        "designation": "Assistant Professor",
+        "email": "atif.jilani@nu.edu.pk",
+        "office#": "C-502 C"
+      },
+      {
+        "Sr#": 5,
+        "name": "Dr. Behjat Zuhaira",
+        "designation": "Assistant Professor",
+        "email": "behjat.zuhaira@nu.edu.pk",
+        "office#": "C-203 C"
+      },
+      {
+        "Sr#": 6,
+        "name": "Dr. Isma Ul Hassan",
+        "designation": "Assistant Professor",
+        "email": "isma.hassan@nu.edu.pk",
+        "office#": "D-111 D"
+      },
+      {
+        "Sr#": 7,
+        "name": "Dr. Muhammad Bilal",
+        "designation": "Assistant Professor",
+        "email": "muhammad.bilal@isb.nu.edu.pk",
+        "office#": "C-503 E"
+      },
+      {
+        "Sr#": 8,
+        "name": "Dr. Shahela Saif",
+        "designation": "Assistant Professor",
+        "email": "shahela.saif@nu.edu.pk",
+        "office#": "C-505 C"
+      },
+      {
+        "Sr#": 9,
+        "name": "Dr. Uzma Mahar",
+        "designation": "Assistant Professor",
+        "email": "uzma.mahar@nu.edu.pk",
+        "office#": "C-202 F"
+      },
+      {
+        "Sr#": 10,
+        "name": "Dr. Zeshan Khan",
+        "designation": "Assistant Professor",
+        "email": "zeshan.khan@nu.edu.pk",
+        "office#": "C-505 E"
+      },
+      {
+        "Sr#": 11,
+        "name": "Mr. Bilal Khalid Dar",
+        "designation": "Lecturer",
+        "email": "bilal.khalid@nu.edu.pk",
+        "office#": "C-502 B"
+      },
+      {
+        "Sr#": 12,
+        "name": "Mr. Irfan Ullah",
+        "designation": "Lecturer",
+        "email": "irfan.ullah@nu.edu.pk",
+        "office#": "C-504 F"
+      },
+      {
+        "Sr#": 13,
+        "name": "Mr. Junaid Ali khan",
+        "designation": "Lecturer",
+        "email": "junaid.ali@isb.nu.edu.pk",
+        "office#": "C-505 B"
+      },
+      {
+        "Sr#": 14,
+        "name": "Mr. Pir Sami Ullah Shah",
+        "designation": "Lecturer",
+        "email": "samiullah.shah@nu.edu.pk",
+        "office#": "C-503 B"
+      },
+      {
+        "Sr#": 15,
+        "name": "Mr. Zaheer Ul Hussain Sani",
+        "designation": "Lecturer",
+        "email": "zaheer.sani@nu.edu.pk",
+        "office#": "C-505 F"
+      },
+      {
+        "Sr#": 16,
+        "name": "Ms. Anum kaleem",
+        "designation": "Lecturer",
+        "email": "anum.kaleem@isb.nu.edu.pk",
+        "office#": "C-504 B"
+      },
+      {
+        "Sr#": 17,
+        "name": "Ms. Fatima Gillani",
+        "designation": "Lecturer",
+        "email": "fatima.gillani@isb.nu.edu.pk",
+        "office#": "C-505 A"
+      },
+      {
+        "Sr#": 18,
+        "name": "Ms. Laiba Imran",
+        "designation": "Lecturer",
+        "email": "laiba.imran@nu.edu.pk",
+        "office#": "C-505 G"
+      },
+      {
+        "Sr#": 19,
+        "name": "Ms. Momina Behzad",
+        "designation": "Lecturer",
+        "email": "momina.behzad@isb.nu.edu.pk",
+        "office#": "C-504 A"
+      },
+      {
+        "Sr#": 20,
+        "name": "Ms. Nigar Azhar Butt",
+        "designation": "Lecturer",
+        "email": "nigar.azhar@isb.nu.edu.pk",
+        "office#": "C-503 F"
+      },
+      {
+        "Sr#": 21,
+        "name": "Ms. Saba Kanwal",
+        "designation": "Lecturer",
+        "email": "saba.kanwal@nu.edu.pk",
+        "office#": "C-504 G"
+      },
+      {
+        "Sr#": 22,
+        "name": "Ms. Zoya Sumbul Zaheer",
+        "designation": "Lecturer",
+        "email": "zoya.sumbul@nu.edu.pk",
+        "office#": "C-502 F"
+      },
+      {
+        "Sr#": 23,
+        "name": "Mr. Akbar Ali Shah",
+        "designation": "Instructor",
+        "email": "akbar.ali@isb.nu.edu.pk",
+        "office#": "Rawal II"
+      },
+      {
+        "Sr#": 24,
+        "name": "Mr. Muhammad Muneeb Baig",
+        "designation": "Instructor",
+        "email": "muneeb.baig@isb.nu.edu.pk",
+        "office#": "C-502 A"
+      },
+      {
+        "Sr#": 25,
+        "name": "Mr. Syed Daniyal Hussain Shah",
+        "designation": "Instructor",
+        "email": "daniyal.hussain@isb.nu.edu.pk",
+        "office#": "C-502 A"
+      },
+      {
+        "Sr#": 26,
+        "name": "Ms. Arige Anjum",
+        "designation": "Instructor",
+        "email": "arige.anjum@isb.nu.edu.pk",
+        "office#": "C-503 A"
+      },
+      {
+        "Sr#": 27,
+        "name": "Ms. Hifza Umer",
+        "designation": "Instructor",
+        "email": "Hifza.Umer@isb.nu.edu.pk",
+        "office#": "C-503 A"
+      },
+      {
+        "Sr#": 28,
+        "name": "Ms. Noor ul Ain",
+        "designation": "Instructor",
+        "email": "Noor.ulAin@isb.nu.edu.pk",
+        "office#": "C-502 G"
+      },
+      {
+        "Sr#": 29,
+        "name": "Ms. Zoya Mahboob",
+        "designation": "Instructor",
+        "email": "Zoya.Mahboob@isb.nu.edu.pk",
+        "office#": "C-502 G"
       }
     ]
   },
@@ -429,10 +971,10 @@ export const facultyData = [
       },
       {
         "Sr#": 7,
-        "name": "Ms. Hina Binte Haq",
+        "name": "Mr. Arslan Aslam",
         "designation": "Lecturer",
-        "email": "hina.haq@nu.edu.pk",
-        "office#": "D-205 F"
+        "email": "arslan.aslam@nu.edu.pk",
+        "office#": "D-205 B"
       },
       {
         "Sr#": 8,
@@ -443,578 +985,87 @@ export const facultyData = [
       },
       {
         "Sr#": 9,
-        "name": "Ms. Farheen Tabassum",
-        "designation": "Lecturer",
-        "email": "farheen.tabassum@isb.nu.edu.pk",
-        "office#": "D-205 C"
-      },
-      {
-        "Sr#": 10,
-        "name": "Mr. Arslan Aslam",
-        "designation": "Lecturer",
-        "email": "arslan.aslam@nu.edu.pk",
-        "office#": "D-205 B"
-      },
-      {
-        "Sr#": 11,
-        "name": "Ms. Sadia Saad",
-        "designation": "Lecturer",
-        "email": "sadia.saad@nu.edu.pk",
-        "office#": "D-205 G"
-      },
-      {
-        "Sr#": 12,
         "name": "Ms. Amina Siddique",
         "designation": "Lecturer",
         "email": "amina.siddique@nu.edu.pk",
         "office#": "D-205 H"
       },
       {
-        "Sr#": 13,
+        "Sr#": 10,
+        "name": "Ms. Farheen Tabassum",
+        "designation": "Lecturer",
+        "email": "farheen.tabassum@isb.nu.edu.pk",
+        "office#": "D-205 C"
+      },
+      {
+        "Sr#": 11,
+        "name": "Ms. Hina Binte Haq",
+        "designation": "Lecturer",
+        "email": "hina.haq@nu.edu.pk",
+        "office#": "D-205 F"
+      },
+      {
+        "Sr#": 12,
         "name": "Ms. Naveen Khan",
         "designation": "Lecturer",
         "email": "naveen.khan@isb.nu.edu.pk",
         "office#": "D-205 A"
       },
       {
-        "Sr#": 14,
-        "name": "Ms. Aneeqa Khalil",
+        "Sr#": 13,
+        "name": "Ms. Sadia Saad",
         "designation": "Lecturer",
-        "email": "aneeqa.khalil@isb.nu.edu.pk",
-        "office#": "C-202 B"
+        "email": "sadia.saad@nu.edu.pk",
+        "office#": "D-205 G"
+      },
+      {
+        "Sr#": 14,
+        "name": "Ms. Safoora Qurban",
+        "designation": "Lecturer",
+        "email": "safoora.qurban@isb.nu.edu.pk",
+        "office#": "C-204 B"
       },
       {
         "Sr#": 15,
-        "name": "Mr. Muhammad Suleman Saboor",
-        "designation": "Instructor",
-        "email": "suleman.saboor@isb.nu.edu.pk",
-        "office#": "D-513 H"
-      },
-      {
-        "Sr#": 16,
         "name": "Mr. Ahsan Shakeel Malik",
         "designation": "Instructor",
         "email": "ahsan.shakeel@isb.nu.edu.pk",
         "office#": "D-513 H"
       },
       {
+        "Sr#": 16,
+        "name": "Mr. Muhammad Suleman Saboor",
+        "designation": "Instructor",
+        "email": "suleman.saboor@isb.nu.edu.pk",
+        "office#": "D-513 H"
+      },
+      {
         "Sr#": 17,
+        "name": "Mr. Nawfal Waqar",
+        "designation": "Instructor",
+        "email": "nawfal.waqar@isb.nu.edu.pk",
+        "office#": "C-204 G"
+      },
+      {
+        "Sr#": 18,
         "name": "Mr. Usman Naeem",
         "designation": "Instructor",
         "email": "usman.naeem@isb.nu.edu.pk",
         "office#": "C-204 G"
       },
       {
-        "Sr#": 18,
-        "name": "Mr. Nawfal Waqar",
-        "designation": "Instructor",
-        "email": "nawfal.waqar@isb.nu.edu.pk",
-        "office#": "C-204 G"
-      }
-    ]
-  },
-  {
-    "department": "Faculty Department of Software Engineering",
-    "faculty": [
-      {
-        "Sr#": 1,
-        "name": "Dr. Usman Habib",
-        "designation": "Professor & HoD",
-        "email": "usman.habib@nu.edu.pk",
-        "office#": "C-501 C"
-      },
-      {
-        "Sr#": 2,
-        "name": "Dr. Naveed Ahmad",
-        "designation": "Professor (Adjunct)",
-        "email": "naveed.ahmad@nu.edu.pk",
-        "office#": "C-204 C"
-      },
-      {
-        "Sr#": 3,
-        "name": "Dr. Behjat Zuhaira",
-        "designation": "Assistant Professor",
-        "email": "behjat.zuhaira@nu.edu.pk",
-        "office#": "C-203 C"
-      },
-      {
-        "Sr#": 4,
-        "name": "Dr. Atif Aftab Ahmed Jilani",
-        "designation": "Assistant Professor",
-        "email": "atif.jilani@nu.edu.pk",
-        "office#": "C-502 C"
-      },
-      {
-        "Sr#": 5,
-        "name": "Dr. Isma Ul Hassan",
-        "designation": "Assistant Professor",
-        "email": "isma.hassan@nu.edu.pk",
-        "office#": "D-111 D"
-      },
-      {
-        "Sr#": 6,
-        "name": "Dr. Asif Muhammad",
-        "designation": "Assistant Professor",
-        "email": "asif.muhammad@isb.nu.edu.pk",
-        "office#": "D-109 E"
-      },
-      {
-        "Sr#": 7,
-        "name": "Dr. Uzma Mahar",
-        "designation": "Assistant Professor",
-        "email": "uzma.mahar@nu.edu.pk",
-        "office#": "C-202 F"
-      },
-      {
-        "Sr#": 8,
-        "name": "Dr. Shahela Saif",
-        "designation": "Assistant Professor",
-        "email": "shahela.saif@nu.edu.pk",
-        "office#": "C-505 C"
-      },
-      {
-        "Sr#": 9,
-        "name": "Dr. Zeshan Khan",
-        "designation": "Assistant Professor",
-        "email": "zeshan.khan@nu.edu.pk",
-        "office#": "C-505 E"
-      },
-      {
-        "Sr#": 10,
-        "name": "Dr. Muhammad Bilal",
-        "designation": "Assistant Professor",
-        "email": "muhammad.bilal@isb.nu.edu.pk",
-        "office#": "C-503 E"
-      },
-      {
-        "Sr#": 11,
-        "name": "Mr. Bilal Khalid Dar",
-        "designation": "Lecturer",
-        "email": "bilal.khalid@nu.edu.pk",
-        "office#": "C-502 B"
-      },
-      {
-        "Sr#": 12,
-        "name": "Mr. Zaheer Ul Hussain Sani",
-        "designation": "Lecturer",
-        "email": "zaheer.sani@nu.edu.pk",
-        "office#": "C-505 F"
-      },
-      {
-        "Sr#": 13,
-        "name": "Mr. Irfan Ullah",
-        "designation": "Lecturer",
-        "email": "irfan.ullah@nu.edu.pk",
-        "office#": "C-504 F"
-      },
-      {
-        "Sr#": 14,
-        "name": "Mr. Pir Sami Ullah Shah",
-        "designation": "Lecturer",
-        "email": "samiullah.shah@nu.edu.pk",
-        "office#": "C-503 B"
-      },
-      {
-        "Sr#": 15,
-        "name": "Ms. Nigar Azhar Butt",
-        "designation": "Lecturer",
-        "email": "nigar.azhar@isb.nu.edu.pk",
-        "office#": "C-503 F"
-      },
-      {
-        "Sr#": 16,
-        "name": "Ms. Laiba Imran",
-        "designation": "Lecturer",
-        "email": "laiba.imran@nu.edu.pk",
-        "office#": "C-505 G"
-      },
-      {
-        "Sr#": 17,
-        "name": "Ms. Anum kaleem",
-        "designation": "Lecturer",
-        "email": "anum.kaleem@isb.nu.edu.pk",
-        "office#": "C-504 B"
-      },
-      {
-        "Sr#": 18,
-        "name": "Mr. Junaid Ali khan",
-        "designation": "Lecturer",
-        "email": "junaid.ali@isb.nu.edu.pk",
-        "office#": "C-505 B"
-      },
-      {
         "Sr#": 19,
-        "name": "Ms. Zoya Sumbul Zaheer",
-        "designation": "Lecturer",
-        "email": "zoya.sumbul@nu.edu.pk",
-        "office#": "C-502 F"
+        "name": "Ms. Aneeqa Khalil",
+        "designation": "Instructor",
+        "email": "aneeqa.khalil@isb.nu.edu.pk",
+        "office#": "C-202 B"
       },
       {
         "Sr#": 20,
-        "name": "Ms. Momina Behzad",
-        "designation": "Lecturer",
-        "email": "momina.behzad@isb.nu.edu.pk",
-        "office#": "C-504 A"
-      },
-      {
-        "Sr#": 21,
-        "name": "Ms. Saba Kanwal",
-        "designation": "Lecturer",
-        "email": "saba.kanwal@nu.edu.pk",
-        "office#": "C-504 G"
-      },
-      {
-        "Sr#": 22,
-        "name": "Mr. Syed Daniyal Hussain Shah",
+        "name": "Ms. Syeda Rubab Zainab",
         "designation": "Instructor",
-        "email": "daniyal.hussain@isb.nu.edu.pk",
-        "office#": "C-502 A"
-      },
-      {
-        "Sr#": 23,
-        "name": "Mr. Muhammad Muneeb Baig",
-        "designation": "Instructor",
-        "email": "muneeb.baig@isb.nu.edu.pk",
-        "office#": "C-502 A"
-      },
-      {
-        "Sr#": 24,
-        "name": "Ms. Zoya Mahboob",
-        "designation": "Instructor",
-        "email": "Zoya.Mahboob@isb.nu.edu.pk",
-        "office#": "C-502 G"
-      },
-      {
-        "Sr#": 25,
-        "name": "Ms. Noor ul Ain",
-        "designation": "Instructor",
-        "email": "Noor.ulAin@isb.nu.edu.pk",
-        "office#": "C-502 G"
-      },
-      {
-        "Sr#": 26,
-        "name": "Ms. Hifza Umer",
-        "designation": "Instructor",
-        "email": "Hifza.Umer@isb.nu.edu.pk",
-        "office#": "C-503 A"
-      },
-      {
-        "Sr#": 27,
-        "name": "Ms. Arige Anjum",
-        "designation": "Instructor",
-        "email": "arige.anjum@isb.nu.edu.pk",
-        "office#": "C-503 A"
-      }
-    ]
-  },
-  {
-    "department": "Faculty Department of Artificial Intelligence & Data Science",
-    "faculty": [
-      {
-        "Sr#": 1,
-        "name": "Dr. Ahmad Din",
-        "designation": "Professor & HoD",
-        "email": "ahmad.din@nu.edu.pk",
-        "office#": "D-201 C"
-      },
-      {
-        "Sr#": 2,
-        "name": "Dr. Waseem Shahzad",
-        "designation": "Professor & Director",
-        "email": "waseem.shahzad@nu.edu.pk",
-        "office#": "Director office"
-      },
-      {
-        "Sr#": 3,
-        "name": "Dr. Muhammad Asif Naeem",
-        "designation": "Professor & Director ORIC",
-        "email": "asif.naeem@nu.edu.pk",
-        "office#": "D-214 C"
-      },
-      {
-        "Sr#": 4,
-        "name": "Dr. Mirza Omer Beg",
-        "designation": "Professor (Adjunct)",
-        "email": "omer.beg@nu.edu.pk",
-        "office#": "C-205 C"
-      },
-      {
-        "Sr#": 5,
-        "name": "Dr. Muhammad Ishtiaq",
-        "designation": "Associate Professor",
-        "email": "muhammad.ishtiaq@nu.edu.pk",
-        "office#": "D-214 D"
-      },
-      {
-        "Sr#": 6,
-        "name": "Dr. Muhammad Nouman Noor",
-        "designation": "Assistant Professor",
-        "email": "nouman.noor@isb.nu.edu.pk",
-        "office#": "D-202 E"
-      },
-      {
-        "Sr#": 7,
-        "name": "Dr. Noshina Tariq",
-        "designation": "Assistant Professor",
-        "email": "noshina.tariq@isb.nu.edu.pk",
-        "office#": "D-202 D"
-      },
-      {
-        "Sr#": 8,
-        "name": "Dr. Mateen Yaqoob",
-        "designation": "Assistant Professor",
-        "email": "mateen.yaqoob@isb.nu.edu.pk",
-        "office#": "D-212 D"
-      },
-      {
-        "Sr#": 9,
-        "name": "Mr. Shoaib Saleem Khattak",
-        "designation": "Lecturer",
-        "email": "shoaib.saleem@nu.edu.pk",
-        "office#": "D-204 H"
-      },
-      {
-        "Sr#": 10,
-        "name": "Ms. Mehreen Javaid",
-        "designation": "Lecturer",
-        "email": "mehreen.javaid@nu.edu.pk",
-        "office#": "D-202 G"
-      },
-      {
-        "Sr#": 11,
-        "name": "Mr. Adil Majeed",
-        "designation": "Lecturer",
-        "email": "adil.majeed@nu.edu.pk",
-        "office#": "D-204 E"
-      },
-      {
-        "Sr#": 12,
-        "name": "Ms. Saira Qamar",
-        "designation": "Lecturer",
-        "email": "saira.qamar@nu.edu.pk",
-        "office#": "D-212 G"
-      },
-      {
-        "Sr#": 13,
-        "name": "Mr. Ahmad Raza",
-        "designation": "Lecturer",
-        "email": "ahmad.raza@isb.nu.edu.pk",
-        "office#": "D-202 C"
-      },
-      {
-        "Sr#": 14,
-        "name": "Ms. Mahnoor Tariq",
-        "designation": "Lecturer",
-        "email": "mahnoor.tariq@isb.nu.edu.pk",
-        "office#": "D-212 B"
-      },
-      {
-        "Sr#": 15,
-        "name": "Ms. Kainat Iqbal",
-        "designation": "Lecturer",
-        "email": "kainat.Iqbal@isb.nu.edu.pk",
-        "office#": "D-212 F"
-      },
-      {
-        "Sr#": 16,
-        "name": "Mr. Shahbaz Hassan",
-        "designation": "Lecturer",
-        "email": "shahbaz.hassan@isb.nu.edu.pk",
-        "office#": "D-212 C"
-      },
-      {
-        "Sr#": 17,
-        "name": "Ms. Zonera Anjum",
-        "designation": "Lecturer",
-        "email": "zonera.anjum@isb.nu.edu.pk",
-        "office#": "D-204 B"
-      },
-      {
-        "Sr#": 18,
-        "name": "Ms. Kanza Hamid",
-        "designation": "Lecturer",
-        "email": "kanza.hamid@isb.nu.edu.pk",
-        "office#": "D-204 F"
-      },
-      {
-        "Sr#": 19,
-        "name": "Mr. Muhammad Sohail Abbas",
-        "designation": "Lecturer",
-        "email": "sohail.abbas@isb.nu.edu.pk",
-        "office#": "D-204 G"
-      },
-      {
-        "Sr#": 20,
-        "name": "Mr. Usama Imtiaz",
-        "designation": "Lecturer",
-        "email": "Usama.Imtiaz@isb.nu.edu.pk",
-        "office#": "D-112 E"
-      },
-      {
-        "Sr#": 21,
-        "name": "Ms. Umarah Qaseem",
-        "designation": "Lecturer",
-        "email": "umarah.qaseem@isb.nu.edu.pk",
-        "office#": "D-202 F"
-      },
-      {
-        "Sr#": 22,
-        "name": "Mr. Mohsin Khan",
-        "designation": "Lecturer",
-        "email": "mohsin.khan@isb.nu.edu.pk",
-        "office#": "C-202 G"
-      },
-      {
-        "Sr#": 23,
-        "name": "Ms. Laraib Afzaal",
-        "designation": "Lecturer",
-        "email": "laraib.afzaal@nu.edu.pk",
-        "office#": "D-202 B"
-      },
-      {
-        "Sr#": 24,
-        "name": "Ms. Azka Atiq",
-        "designation": "Lecturer",
-        "email": "azka.atiq@isb.nu.edu.pk",
-        "office#": "C-202 A"
-      },
-      {
-        "Sr#": 25,
-        "name": "Ms. Mariam Bint Imran",
-        "designation": "Lecturer",
-        "email": "mariam.imran@isb.nu.edu.pk",
-        "office#": "D-202 A"
-      },
-      {
-        "Sr#": 26,
-        "name": "Ms. Khadija Mahmood",
-        "designation": "Lecturer",
-        "email": "khadija.mahmood@nu.edu.pk",
-        "office#": "D-202 H"
-      },
-      {
-        "Sr#": 27,
-        "name": "Mr. Ubaid Ur Rehman",
-        "designation": "Lecturer",
-        "email": "ubaid.rehman@isb.nu.edu.pk",
-        "office#": "D-204 A"
-      },
-      {
-        "Sr#": 28,
-        "name": "Mr. Abdul Hammad Rasheed",
-        "designation": "Instructor",
-        "email": "hammad.rasheed@isb.nu.edu.pk",
-        "office#": "D-513 A"
-      },
-      {
-        "Sr#": 29,
-        "name": "Ms. Maryam Hussain",
-        "designation": "Instructor",
-        "email": "maryam.hussain@isb.nu.edu.pk",
-        "office#": "A 307"
-      },
-      {
-        "Sr#": 30,
-        "name": "Mr. Muhammad Ammar Masood",
-        "designation": "Instructor",
-        "email": "ammar.masood@isb.nu.edu.pk",
-        "office#": "N/A"
-      },
-      {
-        "Sr#": 31,
-        "name": "Ms. Mubrra Asma",
-        "designation": "Instructor",
-        "email": "mubrra.asma@isb.nu.edu.pk",
-        "office#": "A-307"
-      },
-      {
-        "Sr#": 32,
-        "name": "Ms. Palwasha Zahid",
-        "designation": "Instructor",
-        "email": "palwasha.zahid@isb.nu.edu.pk",
-        "office#": "A-307"
-      },
-      {
-        "Sr#": 33,
-        "name": "Ms. Nabeelah Maryam",
-        "designation": "Instructor",
-        "email": "nabeelah.maryam@isb.nu.edu.pk",
-        "office#": "D-513 F"
-      },
-      {
-        "Sr#": 34,
-        "name": "Ms. Sidra Fayyaz",
-        "designation": "Instructor",
-        "email": "sidra.fayyaz@isb.nu.edu.pk",
-        "office#": "A-307"
-      },
-      {
-        "Sr#": 35,
-        "name": "Mr. Ali Hamza",
-        "designation": "Instructor",
-        "email": "ali.hamza@isb.nu.edu.pk",
-        "office#": "D-513 D"
-      },
-      {
-        "Sr#": 36,
-        "name": "Mr. Talha Tariq",
-        "designation": "Instructor",
-        "email": "talha.tariq@isb.nu.edu.pk",
-        "office#": "D-513 D"
-      },
-      {
-        "Sr#": 37,
-        "name": "Mr. Abdul Wahab Khan",
-        "designation": "Instructor",
-        "email": "abdul.wahab@isb.nu.edu.pk",
-        "office#": "D-513 C"
-      }
-    ]
-  },
-  {
-    "department": "Faculty Expected to Join in Fall 2025",
-    "faculty": [
-      {
-        "Sr#": 1,
-        "name": "Dr. Afia Zafar",
-        "designation": "Assistant Professor CS",
-        "email": "afia.zafar@isb.nu.edu.pk",
-        "office#": "D-109 A"
-      },
-      {
-        "Sr#": 2,
-        "name": "Dr. Qurat Ul Ain",
-        "designation": "Assistant Professor AI & DS",
-        "email": "quratul.ain@isb.nu.edu.pk",
-        "office#": "D-212 E"
-      },
-      {
-        "Sr#": 3,
-        "name": "Ms. Fatima Gillani",
-        "designation": "Lecturer SE",
-        "email": "fatima.gillani@isb.nu.edu.pk",
-        "office#": "C-505 A"
-      },
-      {
-        "Sr#": 4,
-        "name": "Mr. Abdullah Bin Zahid",
-        "designation": "Instructor CS",
-        "email": "abdullahbin.zahid@isb.nu.edu.pk",
-        "office#": "N/A"
-      },
-      {
-        "Sr#": 5,
-        "name": "Ms. Sana Saeed",
-        "designation": "Instructor CS",
-        "email": "sana.saeed@isb.nu.edu.pk",
-        "office#": "N/A"
-      },
-      {
-        "Sr#": 6,
-        "name": "Mr. Akbar Ali Shah",
-        "designation": "Instructor SE",
-        "email": "akbar.ali@isb.nu.edu.pk",
-        "office#": "N/A"
+        "email": "rubab.zainab@isb.nu.edu.pk",
+        "office#": "D-112 A"
       }
     ]
   },
@@ -1172,7 +1223,7 @@ export const facultyData = [
         "Sr#": 22,
         "name": "Muhammad Ali",
         "designation": "Associate Professor",
-        "email": "muhammad.ali@nu.edu.pk",
+        "email": "m.ali@nu.edu.pk",
         "office#": "B-203"
       },
       {
@@ -1186,7 +1237,7 @@ export const facultyData = [
         "Sr#": 24,
         "name": "Muhammad Ibrahim",
         "designation": "Lecturer",
-        "email": "muhammad.ibrahim@nu.edu.pk",
+        "email": "m.ibraheem@nu.edu.pk",
         "office#": "B-215"
       },
       {
@@ -1384,327 +1435,7 @@ export const facultyData = [
         "designation": "Lecturer",
         "email": "waqar.ahmad@isb.nu.edu.pk",
         "office#": "N/A"
-      },
-      {
-        "Sr#": 53,
-        "name": "Mr. Furqan Nasir",
-        "designation": "Lecturer",
-        "email": "furqan.nasir@nu.edu.pk",
-        "office#": "N/A"
-      },
-      {
-        "Sr#": 54,
-        "name": "Ms. Safoora",
-        "designation": "Lecturer",
-        "email": "safoora@nu.edu.pk",
-        "office#": "N/A"
-      },
-      {
-        "Sr#": 55,
-        "name": "Ms. Marriam bint Imran",
-        "designation": "Lecturer",
-        "email": "marriam.imran@nu.edu.pk",
-        "office#": "N/A"
-      },
-      {
-        "Sr#": 56,
-        "name": "Mr. Sohail Abbas",
-        "designation": "Lecturer",
-        "email": "sohail.abbas@nu.edu.pk",
-        "office#": "N/A"
-      },
-      {
-        "Sr#": 57,
-        "name": "Ms. Rabail Zahid",
-        "designation": "Lecturer",
-        "email": "rabail.zahid@nu.edu.pk",
-        "office#": "N/A"
-      },
-      {
-        "Sr#": 58,
-        "name": "Ms. Zoya Sumbal Zaheer",
-        "designation": "Lecturer",
-        "email": "zoya.zaheer@nu.edu.pk",
-        "office#": "N/A"
-      },
-      {
-        "Sr#": 59,
-        "name": "Mr. Shahbaz Hasan",
-        "designation": "Lecturer",
-        "email": "shahbaz.hasan@nu.edu.pk",
-        "office#": "N/A"
-      },
-      {
-        "Sr#": 60,
-        "name": "Ms. Khadija Mahmood",
-        "designation": "Lecturer",
-        "email": "khadija.mahmood@nu.edu.pk",
-        "office#": "N/A"
-      },
-      {
-        "Sr#": 61,
-        "name": "Dr. Nouman Noor",
-        "designation": "Associate Professor",
-        "email": "nouman.noor@nu.edu.pk",
-        "office#": "N/A"
-      },
-      {
-        "Sr#": 62,
-        "name": "Dr. Ahmad Din",
-        "designation": "Associate Professor",
-        "email": "ahmad.din@nu.edu.pk",
-        "office#": "N/A"
-      },
-      {
-        "Sr#": 63,
-        "name": "Mr. Usama Imtiaz",
-        "designation": "Lecturer",
-        "email": "usama.imtiaz@nu.edu.pk",
-        "office#": "N/A"
-      },
-      {
-        "Sr#": 64,
-        "name": "Dr. Mateen Yaqoob",
-        "designation": "Associate Professor",
-        "email": "mateen.yaqoob@nu.edu.pk",
-        "office#": "N/A"
-      }
-    ]
-  },
-  {
-    "department": "Faculty Department of Electrical Engineering",
-    "faculty": [
-      {
-        "Sr#": 1,
-        "name": "Aamer Hafeez",
-        "designation": "Associate Professor",
-        "email": "aamer.hafeez@nu.edu.pk",
-        "office#": "EE-201"
-      },
-      {
-        "Sr#": 2,
-        "name": "Aamer Munir",
-        "designation": "Assistant Professor",
-        "email": "aamer.munir@nu.edu.pk",
-        "office#": "EE-202"
-      },
-      {
-        "Sr#": 3,
-        "name": "Fakhar Abbas",
-        "designation": "Lecturer",
-        "email": "fakhar.abbas@nu.edu.pk",
-        "office#": "EE-203"
-      },
-      {
-        "Sr#": 4,
-        "name": "Farhan Khalid",
-        "designation": "Assistant Professor",
-        "email": "farhan.khalid@nu.edu.pk",
-        "office#": "EE-204"
-      },
-      {
-        "Sr#": 5,
-        "name": "Hassan Saif",
-        "designation": "Assistant Professor",
-        "email": "hassan.saif@nu.edu.pk",
-        "office#": "EE-205"
-      },
-      {
-        "Sr#": 6,
-        "name": "Irum Saba",
-        "designation": "Assistant Professor",
-        "email": "irum.saba@nu.edu.pk",
-        "office#": "EE-206"
-      },
-      {
-        "Sr#": 7,
-        "name": "M. Ibrar Khan",
-        "designation": "Lecturer",
-        "email": "ibrar.khan@nu.edu.pk",
-        "office#": "EE-207"
-      },
-      {
-        "Sr#": 8,
-        "name": "Maria Nasir",
-        "designation": "Lecturer",
-        "email": "maria.nasir@nu.edu.pk",
-        "office#": "EE-208"
-      },
-      {
-        "Sr#": 9,
-        "name": "Muhammad Awais",
-        "designation": "Assistant Professor",
-        "email": "muhammad.awais@nu.edu.pk",
-        "office#": "EE-209"
-      },
-      {
-        "Sr#": 10,
-        "name": "Muhammad Saeed",
-        "designation": "Associate Professor",
-        "email": "muhammad.saeed@nu.edu.pk",
-        "office#": "EE-210"
-      },
-      {
-        "Sr#": 11,
-        "name": "Muhammad Tariq",
-        "designation": "Assistant Professor",
-        "email": "muhammad.tariq@nu.edu.pk",
-        "office#": "EE-211"
-      },
-      {
-        "Sr#": 12,
-        "name": "Niaz Ahmed",
-        "designation": "Assistant Professor",
-        "email": "niaz.ahmed@nu.edu.pk",
-        "office#": "EE-212"
-      },
-      {
-        "Sr#": 13,
-        "name": "Rashad Ramzan",
-        "designation": "Professor",
-        "email": "rashad.ramzan@nu.edu.pk",
-        "office#": "EE-213"
-      },
-      {
-        "Sr#": 14,
-        "name": "Sana Saleh",
-        "designation": "Lecturer",
-        "email": "sana.saleh@nu.edu.pk",
-        "office#": "EE-214"
-      },
-      {
-        "Sr#": 15,
-        "name": "Shahid Qureshi",
-        "designation": "Assistant Professor",
-        "email": "shahid.qureshi@nu.edu.pk",
-        "office#": "EE-215"
-      },
-      {
-        "Sr#": 16,
-        "name": "Shahzad Saleem",
-        "designation": "Associate Professor",
-        "email": "shahzad.saleem@nu.edu.pk",
-        "office#": "EE-216"
-      },
-      {
-        "Sr#": 17,
-        "name": "Shehzad Ahmad",
-        "designation": "Lecturer",
-        "email": "shehzad.ahmad@nu.edu.pk",
-        "office#": "EE-217"
-      },
-      {
-        "Sr#": 18,
-        "name": "Waseem Ikram",
-        "designation": "Assistant Professor",
-        "email": "waseem.ikram@nu.edu.pk",
-        "office#": "EE-218"
-      },
-      {
-        "Sr#": 19,
-        "name": "Al Bara Shalaby",
-        "designation": "Assistant Professor",
-        "email": "albara.shalaby@nu.edu.pk",
-        "office#": "EE-219"
-      },
-      {
-        "Sr#": 20,
-        "name": "Farah Asif",
-        "designation": "Lecturer",
-        "email": "farah.asif@nu.edu.pk",
-        "office#": "EE-220"
-      },
-      {
-        "Sr#": 21,
-        "name": "Mehmood-ul-Hassan",
-        "designation": "Associate Professor",
-        "email": "mehmood.hassan@nu.edu.pk",
-        "office#": "EE-221"
-      },
-      {
-        "Sr#": 22,
-        "name": "Irfan Shah",
-        "designation": "Assistant Professor",
-        "email": "irfan.shah@nu.edu.pk",
-        "office#": "EE-222"
-      },
-      {
-        "Sr#": 23,
-        "name": "M. Waqar Ahmad",
-        "designation": "Assistant Professor",
-        "email": "waqar.ahmad@nu.edu.pk",
-        "office#": "EE-223"
-      },
-      {
-        "Sr#": 24,
-        "name": "Shahzad Ahmed",
-        "designation": "Lecturer",
-        "email": "shahzad.ahmed@nu.edu.pk",
-        "office#": "EE-224"
-      },
-      {
-        "Sr#": 25,
-        "name": "Dilnawaz Ahmad",
-        "designation": "Lecturer",
-        "email": "dilnawaz.ahmad@nu.edu.pk",
-        "office#": "EE-225"
-      },
-      {
-        "Sr#": 26,
-        "name": "Ms. Amna Hafeez",
-        "designation": "Lecturer",
-        "email": "amna.hafeez@nu.edu.pk",
-        "office#": "EE-226"
-      },
-      {
-        "Sr#": 27,
-        "name": "Ms. Madiha",
-        "designation": "Lecturer",
-        "email": "madiha@nu.edu.pk",
-        "office#": "EE-227"
-      },
-      {
-        "Sr#": 28,
-        "name": "Mr Hasham",
-        "designation": "Lecturer",
-        "email": "hasham@nu.edu.pk",
-        "office#": "EE-228"
-      },
-      {
-        "Sr#": 29,
-        "name": "Mr. Baber Ejaz.",
-        "designation": "Lecturer",
-        "email": "baber.ejaz@nu.edu.pk",
-        "office#": "EE-229"
-      },
-      {
-        "Sr#": 30,
-        "name": "Ms. Ghazal",
-        "designation": "Lecturer",
-        "email": "ghazal@nu.edu.pk",
-        "office#": "EE-230"
-      },
-      {
-        "Sr#": 31,
-        "name": "Ms. Maria (Vis)",
-        "designation": "Visiting Lecturer",
-        "email": "maria.vis@nu.edu.pk",
-        "office#": "EE-231"
-      },
-      {
-        "Sr#": 32,
-        "name": "Dr. Khurram",
-        "designation": "Associate Professor",
-        "email": "khurram@nu.edu.pk",
-        "office#": "EE-232"
-      },
-      {
-        "Sr#": 33,
-        "name": "Usman Ashraf",
-        "designation": "Lecturer",
-        "email": "usman.ashraf@nu.edu.pk",
-        "office#": "EE-233"
       }
     ]
   }
-]; 
+];
