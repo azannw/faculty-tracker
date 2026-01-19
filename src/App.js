@@ -123,10 +123,8 @@ function App() {
           <div className={`transition-all duration-500 ${debouncedQuery ? 'h-0 opacity-0 overflow-hidden' : 'h-auto opacity-100 mb-10'}`}>
             <p className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed opacity-80 px-4">
               Instantly access faculty office numbers, official emails, and designations.
-              <br className="hidden md:block" />
-              Simplify your connection with the FAST NUCES faculty.
-              </p>
-            </div>
+            </p>
+          </div>
 
           <div className="relative max-w-xl mx-auto group z-10 w-full">
             <div className={`absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
