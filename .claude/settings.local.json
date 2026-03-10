@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:isb.nu.edu.pk)",
+      "Bash(cd D:/devstuff/web_projects/fast-faculty && npx react-scripts build 2>&1 | tail -20)",
+      "Bash(cd D:/devstuff/web_projects/fast-faculty && npx react-scripts test --watchAll=false 2>&1)",
+      "Bash(cd D:/devstuff/web_projects/fast-faculty && npx react-scripts build 2>&1 | tail -10)",
+      "Bash(start http://localhost:3000)"
+    ]
+  }
+}
