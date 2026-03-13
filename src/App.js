@@ -5,14 +5,6 @@ import { facultyDirectory, schoolOptions } from './data/facultyDirectory';
 import { searchFaculty } from './utils/search';
 import Footer from './components/Footer';
 
-const SHORT_LABELS = {
-  all: 'All',
-  computing: 'Computing',
-  engineering: 'Engineering',
-  business: 'Business',
-  humanities: 'Sciences',
-};
-
 const FacultyCard = memo(({ facultyMember, copiedEmailId, onCopyEmail }) => {
   const isCopied = copiedEmailId === facultyMember.id;
 
@@ -149,7 +141,6 @@ function App() {
   );
 
   const totalCount = facultyDirectory.length;
-  const deptCount = useMemo(() => new Set(facultyDirectory.map((f) => f.department)).size, []);
 
   const hasSearchQuery = Boolean(deferredSearchQuery.trim());
   const hasNonAllFilter = deferredSchoolFilter !== 'all' || deferredDepartmentFilter !== 'all';
@@ -176,7 +167,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-zinc-900 text-white flex flex-col font-sans selection:bg-blue-500/20">
+    <div className={`w-full max-w-full overflow-x-hidden bg-zinc-900 text-white flex flex-col font-sans selection:bg-blue-500/20 ${isHomepage ? 'h-screen overflow-y-hidden' : 'min-h-screen'}`}>
       <header className="sticky top-0 z-50 w-full border-b border-zinc-800/80 bg-zinc-900/80 backdrop-blur-xl supports-[backdrop-filter]:bg-zinc-900/60">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-3 sm:px-6 sm:py-4 lg:px-8">
           <div className="flex items-center gap-2.5">
@@ -211,7 +202,7 @@ function App() {
         {!isHomepage && <div className="pt-4 sm:pt-6" />}
 
         {/* Search bar */}
-        <div className={isHomepage ? 'mt-6 sm:mt-9' : ''}>
+        <div className={isHomepage ? 'mt-6 sm:mt-9 max-w-xl w-full mx-auto' : ''}>
           <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
             <div className="relative flex-1 rounded-2xl border border-zinc-700/50 bg-zinc-800/80 search-glow">
               <Search size={18} className="absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 text-zinc-500 pointer-events-none" />
@@ -296,7 +287,7 @@ function App() {
         </div>
 
         {/* Filter pills */}
-        <div className={`mt-3 flex flex-wrap gap-1.5 sm:gap-2 ${isHomepage ? 'justify-center' : ''}`}>
+        <div className={`flex flex-wrap gap-2 sm:gap-2.5 ${isHomepage ? 'mt-4 sm:mt-5 justify-center max-w-xl mx-auto' : 'mt-3'}`}>
           {schoolOptions.map((school) => {
             const isActive = schoolFilter === school.value;
             return (
@@ -304,40 +295,17 @@ function App() {
                 key={school.value}
                 aria-label={school.label}
                 onClick={() => setSchoolFilter(school.value)}
-                className={`rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-150 border ${
+                className={`rounded-full px-4 py-2 sm:px-5 sm:py-2.5 text-sm sm:text-[15px] font-medium transition-all duration-150 border ${
                   isActive
-                    ? 'bg-white text-zinc-900 border-transparent'
+                    ? 'bg-white text-zinc-900 border-transparent shadow-lg shadow-white/5'
                     : 'bg-zinc-800/70 text-zinc-400 border-zinc-700/40 hover:bg-zinc-700/60 hover:text-zinc-200'
                 }`}
               >
-                <span className="sm:hidden">{SHORT_LABELS[school.value]}</span>
-                <span className="hidden sm:inline">{school.label}</span>
+                {school.label}
               </button>
             );
           })}
         </div>
-
-        {/* Stats — homepage only */}
-        {isHomepage && (
-          <div className="mt-8 sm:mt-16 flex items-center justify-center">
-            <div className="flex items-center gap-6 sm:gap-12">
-              <div className="text-center">
-                <p className="text-xl sm:text-3xl font-bold text-white tabular-nums">{totalCount}</p>
-                <p className="text-[10px] sm:text-xs text-zinc-500 mt-0.5 sm:mt-1 uppercase tracking-widest">Faculty</p>
-              </div>
-              <div className="h-7 sm:h-8 w-px bg-zinc-700/50" />
-              <div className="text-center">
-                <p className="text-xl sm:text-3xl font-bold text-white tabular-nums">{deptCount}</p>
-                <p className="text-[10px] sm:text-xs text-zinc-500 mt-0.5 sm:mt-1 uppercase tracking-widest">Depts</p>
-              </div>
-              <div className="h-7 sm:h-8 w-px bg-zinc-700/50" />
-              <div className="text-center">
-                <p className="text-xl sm:text-3xl font-bold text-white tabular-nums">4</p>
-                <p className="text-[10px] sm:text-xs text-zinc-500 mt-0.5 sm:mt-1 uppercase tracking-widest">Schools</p>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* Bottom spacer — larger to push content above center */}
         {isHomepage && <div className="flex-[2]" />}
