@@ -55,7 +55,7 @@ test('copy email button copies the selected faculty email', async () => {
 
   fireEvent.change(screen.getByRole('textbox', { name: /search/i }), { target: { value: 'Dr. Muhammad Tariq' } });
   
-  const copyButton = await screen.findByRole('button', { name: /copy email/i });
+  const copyButton = await screen.findByRole('button', { name: /^copy$/i });
   await userEvent.click(copyButton);
 
   expect(navigator.clipboard.writeText).toHaveBeenCalledWith('tariq.khan@nu.edu.pk');
