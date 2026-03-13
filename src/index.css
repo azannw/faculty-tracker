@@ -11,6 +11,8 @@
 
   body {
     @apply antialiased bg-zinc-900;
+    width: 100%;
+    overflow-x: hidden;
   }
 }
 

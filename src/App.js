@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState, useDeferredValue, memo, useCallback } from 'react';
+import React, { useEffect, useMemo, useState, useDeferredValue, memo, useCallback, useRef } from 'react';
 import { Building2, Check, ChevronDown, Copy, Mail, MapPin, Phone, Search, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { facultyDirectory, schoolOptions } from './data/facultyDirectory';
@@ -121,12 +121,10 @@ function App() {
     }
   }, [departmentFilter, departmentOptions]);
 
-  // Close dropdown when school changes
   useEffect(() => {
     setDeptDropdownOpen(false);
   }, [schoolFilter]);
 
-  // Close dropdown on outside click or Escape
   useEffect(() => {
     if (!deptDropdownOpen) return;
     const close = (e) => {
@@ -153,8 +151,11 @@ function App() {
   const totalCount = facultyDirectory.length;
   const deptCount = useMemo(() => new Set(facultyDirectory.map((f) => f.department)).size, []);
 
-  const shouldShowResults =
-    Boolean(deferredSearchQuery.trim()) || deferredSchoolFilter !== 'all' || deferredDepartmentFilter !== 'all';
+  const hasSearchQuery = Boolean(deferredSearchQuery.trim());
+  const hasNonAllFilter = deferredSchoolFilter !== 'all' || deferredDepartmentFilter !== 'all';
+  const shouldShowResults = hasSearchQuery;
+  const hasFilterWithoutSearch = !hasSearchQuery && hasNonAllFilter;
+  const isHomepage = !hasSearchQuery && !hasNonAllFilter;
 
   const hasActiveFilters = searchQuery || schoolFilter !== 'all' || departmentFilter !== 'all';
 
@@ -175,9 +176,9 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-zinc-900 text-white flex flex-col font-sans selection:bg-blue-500/20">
-      <header className="sticky top-0 z-50 border-b border-zinc-800/80 bg-zinc-900/80 backdrop-blur-xl supports-[backdrop-filter]:bg-zinc-900/60">
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4 lg:px-8">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-zinc-900 text-white flex flex-col font-sans selection:bg-blue-500/20">
+      <header className="sticky top-0 z-50 w-full border-b border-zinc-800/80 bg-zinc-900/80 backdrop-blur-xl supports-[backdrop-filter]:bg-zinc-900/60">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-3 sm:px-6 sm:py-4 lg:px-8">
           <div className="flex items-center gap-2.5">
             <Building2 size={18} className="text-blue-500" />
             <h1 className="text-base sm:text-lg font-semibold text-white tracking-tight leading-none">
@@ -190,11 +191,14 @@ function App() {
         </div>
       </header>
 
-      <main className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8 min-w-0">
+      <main className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 sm:px-6 lg:px-8 pb-6 sm:pb-8 min-w-0">
+
+        {/* Top spacer — pushes homepage content to optical center */}
+        {isHomepage && <div className="flex-1 min-h-[32px]" />}
 
         {/* Homepage hero */}
-        {!shouldShowResults && (
-          <div className="text-center pt-8 sm:pt-[13vh]">
+        {isHomepage && (
+          <div className="text-center">
             <h2 className="text-[26px] sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
               Faculty Directory
             </h2>
@@ -204,10 +208,10 @@ function App() {
           </div>
         )}
 
-        {shouldShowResults && <div className="pt-4 sm:pt-6" />}
+        {!isHomepage && <div className="pt-4 sm:pt-6" />}
 
         {/* Search bar */}
-        <div className={!shouldShowResults ? 'mt-5 sm:mt-9' : ''}>
+        <div className={isHomepage ? 'mt-6 sm:mt-9' : ''}>
           <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
             <div className="relative flex-1 rounded-2xl border border-zinc-700/50 bg-zinc-800/80 search-glow">
               <Search size={18} className="absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 text-zinc-500 pointer-events-none" />
@@ -292,7 +296,7 @@ function App() {
         </div>
 
         {/* Filter pills */}
-        <div className={`mt-3 flex flex-wrap gap-1.5 sm:gap-2 ${!shouldShowResults ? 'justify-center' : ''}`}>
+        <div className={`mt-3 flex flex-wrap gap-1.5 sm:gap-2 ${isHomepage ? 'justify-center' : ''}`}>
           {schoolOptions.map((school) => {
             const isActive = schoolFilter === school.value;
             return (
@@ -314,9 +318,9 @@ function App() {
         </div>
 
         {/* Stats — homepage only */}
-        {!shouldShowResults && (
+        {isHomepage && (
           <div className="mt-8 sm:mt-16 flex items-center justify-center">
-            <div className="flex items-center gap-5 sm:gap-12">
+            <div className="flex items-center gap-6 sm:gap-12">
               <div className="text-center">
                 <p className="text-xl sm:text-3xl font-bold text-white tabular-nums">{totalCount}</p>
                 <p className="text-[10px] sm:text-xs text-zinc-500 mt-0.5 sm:mt-1 uppercase tracking-widest">Faculty</p>
@@ -332,6 +336,20 @@ function App() {
                 <p className="text-[10px] sm:text-xs text-zinc-500 mt-0.5 sm:mt-1 uppercase tracking-widest">Schools</p>
               </div>
             </div>
+          </div>
+        )}
+
+        {/* Bottom spacer — larger to push content above center */}
+        {isHomepage && <div className="flex-[2]" />}
+
+        {/* Prompt when filter is active but no search query */}
+        {hasFilterWithoutSearch && (
+          <div className="flex flex-col items-center justify-center py-16 sm:py-28 text-center">
+            <Search size={22} className="text-zinc-500 mb-4" />
+            <h3 className="text-base font-semibold text-white">Search to see results</h3>
+            <p className="mt-2 text-sm text-zinc-500 max-w-xs">
+              Type a name, email, or office number to find faculty in this school.
+            </p>
           </div>
         )}
 

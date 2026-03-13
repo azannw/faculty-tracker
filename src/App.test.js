@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
 import { facultyDirectory } from './data/facultyDirectory';
@@ -41,10 +41,13 @@ test('exact name search only returns the targeted faculty member', async () => {
 test('business school filter excludes engineering faculty', async () => {
   render(<App />);
 
+  fireEvent.change(screen.getByRole('textbox', { name: /search/i }), { target: { value: 'Dr.' } });
   await userEvent.click(screen.getAllByRole('button', { name: /business school/i })[0]);
 
   expect(await screen.findByText('Dr. Sadia Nadeem')).toBeInTheDocument();
-  expect(screen.queryByText('Dr. Muhammad Tariq')).not.toBeInTheDocument();
+  await waitFor(() => {
+    expect(screen.queryByText('Dr. Muhammad Tariq')).not.toBeInTheDocument();
+  });
 });
 
 test('copy email button copies the selected faculty email', async () => {
