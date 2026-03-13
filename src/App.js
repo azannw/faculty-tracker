@@ -5,104 +5,87 @@ import { facultyDirectory, schoolOptions } from './data/facultyDirectory';
 import { searchFaculty } from './utils/search';
 import Footer from './components/Footer';
 
-const getInitials = (name) => {
-  const parts = name.replace(/^(Dr\.|Mr\.|Ms\.)\s*/i, '').split(' ');
-  if (parts.length >= 2) {
-    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-  }
-  return parts[0]?.[0]?.toUpperCase() || '?';
+const SHORT_LABELS = {
+  all: 'All',
+  computing: 'Computing',
+  engineering: 'Engineering',
+  business: 'Business',
+  humanities: 'Sciences',
 };
 
 const FacultyCard = memo(({ facultyMember, copiedEmailId, onCopyEmail }) => {
   const isCopied = copiedEmailId === facultyMember.id;
-  const initials = getInitials(facultyMember.name);
 
   return (
-    <motion.article 
-      layout
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.2 }}
-      className="flex flex-col overflow-hidden rounded-xl bg-white shadow-sm border border-slate-200 hover:border-slate-300 transition-colors"
+    <motion.article
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.15 }}
+      className="flex flex-col rounded-2xl bg-zinc-800 p-5"
     >
-      <div className="p-5 flex-1">
-        <div className="flex items-start gap-4">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-slate-100 text-lg font-semibold text-slate-700">
-            {initials}
-          </div>
-          <div className="flex-1 min-w-0 pt-0.5">
-            <h3 className="truncate text-base font-bold text-slate-900" title={facultyMember.name}>
-              {facultyMember.name}
-            </h3>
-            <p className="mt-0.5 text-sm text-slate-500 line-clamp-2" title={facultyMember.designation}>
-              {facultyMember.designation}
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-4 flex flex-wrap gap-2">
-          <span className="inline-flex items-center rounded-md bg-slate-100 px-2 py-1 text-xs font-medium text-slate-600">
-            {facultyMember.department}
-          </span>
-          <span className="inline-flex items-center rounded-md bg-slate-50 px-2 py-1 text-xs font-medium text-slate-500 border border-slate-200">
-            {facultyMember.schoolLabel}
-          </span>
-        </div>
-
-        <div className="mt-5 space-y-2.5">
-          <div className="flex items-start gap-3 text-sm">
-            <MapPin size={16} className="mt-0.5 text-slate-400 shrink-0" />
-            <div className="min-w-0 flex-1">
-              <p className="text-slate-600"><span className="font-medium text-slate-900">Office:</span> {facultyMember.office || 'N/A'}</p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3 text-sm">
-            <Phone size={16} className="mt-0.5 text-slate-400 shrink-0" />
-            <div className="min-w-0 flex-1">
-              <p className="text-slate-600"><span className="font-medium text-slate-900">Extension:</span> {facultyMember.extension || 'N/A'}</p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3 text-sm">
-            <Mail size={16} className="mt-0.5 text-slate-400 shrink-0" />
-            <div className="min-w-0 flex-1">
-              <p className="text-slate-600 truncate" title={facultyMember.email || 'N/A'}>
-                <span className="font-medium text-slate-900">Email:</span> {facultyMember.email || 'N/A'}
-              </p>
-            </div>
-          </div>
-        </div>
+      <div className="flex-1">
+        <h3 className="truncate text-base font-semibold text-white" title={facultyMember.name}>
+          {facultyMember.name}
+        </h3>
+        <p className="mt-0.5 text-sm text-zinc-400 line-clamp-1" title={facultyMember.designation}>
+          {facultyMember.designation}
+        </p>
+        <p className="mt-1 text-xs text-zinc-500 truncate">
+          {facultyMember.department} · {facultyMember.schoolLabel}
+        </p>
       </div>
 
-      <div className="p-5 pt-0 mt-auto">
-        <div className="flex gap-3">
-          <button
-            type="button"
-            onClick={() => onCopyEmail(facultyMember)}
-            disabled={!facultyMember.email}
-            className={`flex-1 inline-flex justify-center items-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium transition-colors ${
-              !facultyMember.email
-                ? 'cursor-not-allowed border-slate-100 bg-slate-50 text-slate-400'
-                : isCopied
-                  ? 'border-green-200 bg-green-50 text-green-700'
-                  : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:text-slate-900'
-            }`}
-          >
-            {isCopied ? <Check size={14} /> : <Copy size={14} />}
-            {isCopied ? 'Copied' : 'Copy Email'}
-          </button>
-          <a
-            href={facultyMember.email ? `mailto:${facultyMember.email}` : undefined}
-            className={`flex-1 inline-flex justify-center items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-              !facultyMember.email
-                ? 'pointer-events-none bg-slate-100 text-slate-400'
-                : 'bg-slate-900 text-white hover:bg-slate-800'
-            }`}
-          >
-            <Mail size={14} />
-            Email
-          </a>
+      <div className="mt-4 space-y-2.5">
+        <div className="flex items-center gap-3">
+          <MapPin size={16} className="text-zinc-500 shrink-0" />
+          <span className="text-sm font-medium text-zinc-200 truncate">{facultyMember.office || '—'}</span>
         </div>
+        <div className="flex items-center gap-3">
+          <Mail size={16} className="text-zinc-500 shrink-0" />
+          {facultyMember.email ? (
+            <a href={`mailto:${facultyMember.email}`} className="text-sm text-blue-400 truncate hover:text-blue-300 transition-colors" title={facultyMember.email}>
+              {facultyMember.email}
+            </a>
+          ) : (
+            <span className="text-sm text-zinc-600">—</span>
+          )}
+        </div>
+        {facultyMember.extension && (
+          <div className="flex items-center gap-3">
+            <Phone size={16} className="text-zinc-500 shrink-0" />
+            <span className="text-sm text-zinc-400">Ext {facultyMember.extension}</span>
+          </div>
+        )}
+      </div>
+
+      <div className="mt-4 pt-4 border-t border-zinc-700/40 flex gap-2.5">
+        <button
+          type="button"
+          onClick={() => onCopyEmail(facultyMember)}
+          disabled={!facultyMember.email}
+          className={`flex-1 inline-flex justify-center items-center gap-2 rounded-xl px-3 py-3 text-sm font-medium transition-colors duration-150 ${
+            !facultyMember.email
+              ? 'cursor-not-allowed bg-zinc-700/30 text-zinc-600'
+              : isCopied
+                ? 'bg-green-500/10 text-green-400'
+                : 'bg-zinc-700 text-zinc-300 hover:bg-zinc-600 hover:text-white active:scale-[0.98]'
+          }`}
+        >
+          {isCopied ? <Check size={15} /> : <Copy size={15} />}
+          {isCopied ? 'Copied' : 'Copy Email'}
+        </button>
+        <a
+          href={facultyMember.email ? `mailto:${facultyMember.email}` : undefined}
+          className={`flex-1 inline-flex justify-center items-center gap-2 rounded-xl px-3 py-3 text-sm font-medium transition-colors duration-150 ${
+            !facultyMember.email
+              ? 'pointer-events-none bg-zinc-700/30 text-zinc-600'
+              : 'bg-blue-500 text-white hover:bg-blue-400 active:scale-[0.98]'
+          }`}
+        >
+          <Mail size={15} />
+          Email
+        </a>
       </div>
     </motion.article>
   );
@@ -147,9 +130,12 @@ function App() {
 
   const handleCopyEmail = useCallback(async (facultyMember) => {
     if (!facultyMember.email || !navigator.clipboard?.writeText) return;
-    setCopiedEmailId(facultyMember.id);
+    const id = facultyMember.id;
+    setCopiedEmailId(id);
     await navigator.clipboard.writeText(facultyMember.email);
-    window.setTimeout(() => setCopiedEmailId(''), 1600);
+    window.setTimeout(() => {
+      setCopiedEmailId((prev) => (prev === id ? '' : prev));
+    }, 1600);
   }, []);
 
   const resetFilters = useCallback(() => {
@@ -159,40 +145,39 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-slate-200">
-      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white">
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded bg-slate-900 text-white">
-              <Building2 size={18} />
-            </div>
-            <div>
-              <h1 className="text-lg font-bold text-slate-900 leading-none">FAST Faculty</h1>
-            </div>
+    <div className="min-h-screen bg-zinc-900 text-white flex flex-col font-sans selection:bg-blue-500/20">
+      <header className="sticky top-0 z-50 border-b border-zinc-800/80 bg-zinc-900/80 backdrop-blur-xl supports-[backdrop-filter]:bg-zinc-900/60">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4 lg:px-8">
+          <div className="flex items-center gap-2">
+            <Building2 size={18} className="text-blue-500" />
+            <h1 className="text-base sm:text-lg font-semibold text-white tracking-tight leading-none">
+              FAST Faculty
+            </h1>
           </div>
-          <div className="hidden sm:block text-sm font-medium text-slate-500">
-            {totalCount} Records
-          </div>
+          <span className="text-sm text-zinc-500">
+            {totalCount} faculty
+          </span>
         </div>
       </header>
 
-      <main className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-4 py-6 sm:px-6 lg:px-8 sm:py-8">
-        <div className="mb-8 space-y-4">
-          <div className="flex flex-col sm:flex-row gap-3">
+      <main className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-4 py-4 sm:px-6 sm:py-8 lg:px-8">
+        <div className="mb-5 sm:mb-8 space-y-2.5 sm:space-y-3">
+          <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
             <div className="relative flex-1">
-              <Search size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+              <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 pointer-events-none" />
               <input
                 type="text"
                 aria-label="Search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search by name, department, office, or extension..."
-                className="w-full rounded-lg border border-slate-300 bg-white py-2.5 pl-10 pr-10 text-sm text-slate-900 placeholder:text-slate-400 focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900"
+                placeholder="Search faculty..."
+                className="w-full rounded-xl bg-zinc-800 py-2.5 pl-10 pr-10 text-sm text-white placeholder:text-zinc-500 border border-zinc-700/40 focus:border-zinc-600 focus:outline-none transition-colors"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 rounded text-zinc-500 hover:text-zinc-300 transition-colors"
+                  aria-label="Clear search"
                 >
                   <X size={16} />
                 </button>
@@ -200,36 +185,38 @@ function App() {
             </div>
 
             {schoolFilter !== 'all' && (
-              <div className="relative sm:w-64 shrink-0">
+              <div className="relative sm:w-56 shrink-0">
                 <select
                   value={departmentFilter}
                   onChange={(e) => setDepartmentFilter(e.target.value)}
-                  className="w-full rounded-lg border border-slate-300 bg-white py-2.5 pl-3 pr-10 text-sm font-medium text-slate-700 focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900 appearance-none cursor-pointer"
+                  className="w-full rounded-xl bg-zinc-800 py-2.5 pl-3.5 pr-10 text-sm font-medium text-zinc-400 border border-zinc-700/40 focus:border-zinc-600 focus:outline-none appearance-none cursor-pointer transition-colors"
                 >
                   <option value="all">All Departments</option>
                   {departmentOptions.map((dept) => (
                     <option key={dept} value={dept}>{dept}</option>
                   ))}
                 </select>
-                <ChevronDown size={16} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                <ChevronDown size={14} className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-zinc-500" />
               </div>
             )}
           </div>
 
-          <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {schoolOptions.map((school) => {
               const isActive = schoolFilter === school.value;
               return (
                 <button
                   key={school.value}
+                  aria-label={school.label}
                   onClick={() => setSchoolFilter(school.value)}
-                  className={`shrink-0 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                  className={`rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium transition-colors duration-150 ${
                     isActive
-                      ? 'bg-slate-900 text-white'
-                      : 'bg-white border border-slate-300 text-slate-700 hover:bg-slate-50'
+                      ? 'bg-white text-zinc-900'
+                      : 'bg-zinc-800 text-zinc-500 hover:text-white'
                   }`}
                 >
-                  {school.label}
+                  <span className="sm:hidden">{SHORT_LABELS[school.value]}</span>
+                  <span className="hidden sm:inline">{school.label}</span>
                 </button>
               );
             })}
@@ -238,61 +225,59 @@ function App() {
 
         <div className="flex-1">
           {hasActiveFilters && (
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-sm font-semibold text-slate-700">
-                {filteredFaculty.length} Result{filteredFaculty.length !== 1 ? 's' : ''}
+            <div className="mb-3 sm:mb-4 flex items-center justify-between">
+              <h2 className="text-sm text-zinc-500">
+                {filteredFaculty.length} result{filteredFaculty.length !== 1 ? 's' : ''}
               </h2>
               <button
                 onClick={resetFilters}
-                className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors"
+                className="text-sm font-medium text-blue-500 hover:text-blue-400 transition-colors"
               >
-                Clear Filters
+                Clear
               </button>
             </div>
           )}
 
           {!shouldShowResults ? (
-            <div className="rounded-xl border border-slate-200 bg-white p-6 sm:p-10 shadow-sm">
-              <div className="max-w-2xl">
-                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
-                  Faculty Directory
-                </h2>
-                <p className="mt-3 text-base text-slate-600">
-                  Search across all FAST NUCES Islamabad departments. Get instant access to office locations, phone extensions, and email addresses.
-                </p>
-              </div>
+            <div className="rounded-2xl bg-zinc-800 px-5 py-8 sm:p-10 lg:p-12">
+              <h2 className="text-[28px] leading-tight sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
+                Faculty Directory
+              </h2>
+              <p className="mt-3 text-sm sm:text-base text-zinc-500 leading-relaxed max-w-lg">
+                Search across all FAST NUCES Islamabad departments. Find office locations, phone extensions, and email addresses.
+              </p>
 
-              <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-4">
-                <div className="rounded-lg bg-slate-50 p-4 border border-slate-100">
-                  <p className="text-2xl font-bold text-slate-900">{totalCount}</p>
-                  <p className="text-sm font-medium text-slate-500 mt-1">Total Faculty</p>
+              <div className="mt-8 sm:mt-10 grid grid-cols-3 gap-2.5 sm:gap-3">
+                <div className="rounded-xl bg-zinc-700/25 px-3.5 py-4 sm:p-5 text-center">
+                  <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">{totalCount}</p>
+                  <p className="text-[11px] sm:text-sm text-zinc-500 mt-1">Faculty</p>
                 </div>
-                <div className="rounded-lg bg-slate-50 p-4 border border-slate-100">
-                  <p className="text-2xl font-bold text-slate-900">{deptCount}</p>
-                  <p className="text-sm font-medium text-slate-500 mt-1">Departments</p>
+                <div className="rounded-xl bg-zinc-700/25 px-3.5 py-4 sm:p-5 text-center">
+                  <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">{deptCount}</p>
+                  <p className="text-[11px] sm:text-sm text-zinc-500 mt-1">Departments</p>
                 </div>
-                <div className="col-span-2 sm:col-span-1 rounded-lg bg-slate-50 p-4 border border-slate-100">
-                  <p className="text-2xl font-bold text-slate-900">4</p>
-                  <p className="text-sm font-medium text-slate-500 mt-1">Schools</p>
+                <div className="rounded-xl bg-zinc-700/25 px-3.5 py-4 sm:p-5 text-center">
+                  <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">4</p>
+                  <p className="text-[11px] sm:text-sm text-zinc-500 mt-1">Schools</p>
                 </div>
               </div>
             </div>
           ) : filteredFaculty.length === 0 ? (
-            <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-slate-300 bg-white py-20 px-6 text-center shadow-sm">
-              <Search size={32} className="text-slate-300 mb-4" />
-              <h3 className="text-lg font-bold text-slate-900">No faculty found</h3>
-              <p className="mt-2 text-sm text-slate-500 max-w-sm">
-                We couldn't find anyone matching your search criteria. Try adjusting your filters or search term.
+            <div className="flex flex-col items-center justify-center rounded-2xl bg-zinc-800 py-16 sm:py-20 px-6 text-center">
+              <Search size={24} className="text-zinc-600 mb-4" />
+              <h3 className="text-base font-semibold text-white">No results found</h3>
+              <p className="mt-1.5 text-sm text-zinc-500 max-w-xs">
+                Try a different search term or adjust your filters.
               </p>
               <button
                 onClick={resetFilters}
-                className="mt-6 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-slate-800 transition-colors"
+                className="mt-5 rounded-full bg-blue-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-400 transition-colors"
               >
-                Clear all filters
+                Clear filters
               </button>
             </div>
           ) : (
-            <motion.div layout className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid gap-2.5 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               <AnimatePresence mode="popLayout">
                 {filteredFaculty.map((facultyMember) => (
                   <FacultyCard
@@ -303,12 +288,12 @@ function App() {
                   />
                 ))}
               </AnimatePresence>
-            </motion.div>
+            </div>
           )}
         </div>
       </main>
 
-      <Footer darkMode={false} />
+      <Footer />
     </div>
   );
 }

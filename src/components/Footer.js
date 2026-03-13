@@ -1,48 +1,51 @@
 import React from 'react';
-import { FaYoutube, FaLinkedin, FaWhatsapp } from "react-icons/fa6";
+import { FaYoutube, FaLinkedin } from "react-icons/fa6";
 
-const Footer = ({ darkMode }) => {
+const Footer = () => {
   const links = [
-    { icon: <FaLinkedin size={20} />, href: "https://linkedin.com/in/azanw", label: "LinkedIn" },
-    { icon: <FaYoutube size={20} />, href: "https://youtube.com/@csconnectpk", label: "YouTube" },
-    { icon: <FaWhatsapp size={20} />, href: "https://chat.whatsapp.com/K1vRPmsHIgxJY842UPUjoB", label: "WhatsApp" }
+    { icon: <FaLinkedin size={18} />, href: "https://linkedin.com/in/azanw", label: "LinkedIn" },
+    { icon: <FaYoutube size={18} />, href: "https://youtube.com/@csconnectpk", label: "YouTube" },
   ];
 
   return (
-    <footer className={`w-full py-8 mt-auto border-t transition-colors duration-300 ${
-      darkMode ? 'border-gray-900 bg-black text-gray-400' : 'border-gray-100 bg-white text-gray-500'
-    }`}>
-      <div className="max-w-4xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-        
-        <div className="flex items-center gap-1 text-sm font-medium">
-          <span>Made by</span>
-          <a 
-            href="https://azanw.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className={`font-bold transition-colors ${
-              darkMode ? 'text-white hover:text-blue-400' : 'text-black hover:text-blue-600'
-            }`}
+    <footer className="w-full mt-auto bg-zinc-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-5">
+        <p className="text-sm text-zinc-400 text-center sm:text-left">
+          Found any issues or have suggestions?{' '}
+          <a
+            href="mailto:hi@azanw.com"
+            className="text-blue-500 hover:text-blue-400 transition-colors"
           >
-            Azan
+            hi@azanw.com
           </a>
-        </div>
+        </p>
 
-        <div className="flex items-center gap-6">
-          {links.map((link, idx) => (
+        <div className="pt-4 border-t border-zinc-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-zinc-600">
+            Made by{' '}
             <a
-              key={idx}
-              href={link.href}
+              href="https://azanw.com"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={link.label}
-              className={`transition-all duration-300 transform hover:scale-110 ${
-                darkMode ? 'hover:text-white' : 'hover:text-black'
-              }`}
+              className="text-zinc-400 hover:text-white transition-colors"
             >
-              {link.icon}
+              Azan
             </a>
-          ))}
+          </p>
+          <div className="flex items-center gap-5">
+            {links.map((link, idx) => (
+              <a
+                key={idx}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.label}
+                className="text-zinc-600 hover:text-zinc-300 transition-colors"
+              >
+                {link.icon}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

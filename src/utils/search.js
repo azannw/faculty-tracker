@@ -60,7 +60,9 @@ const getNameMatchScore = (name, query) => {
 
   const fuzzyMatch = queryTokens.every((queryToken) => {
     if (queryToken.length < 4) {
-      return false;
+      return nameTokens.some(
+        (nameToken) => nameToken === queryToken || nameToken.startsWith(queryToken),
+      );
     }
 
     const allowedDistance = queryToken.length > 6 ? 2 : 1;
@@ -117,7 +119,7 @@ export const searchFaculty = (facultyDirectory, query, schoolFilter, departmentF
     return filteredDirectory.sort((left, right) => left.name.localeCompare(right.name));
   }
 
-  return filteredDirectory
+  const scored = filteredDirectory
     .map((facultyMember) => {
       const nameScore = getNameMatchScore(facultyMember.name, normalizedQuery);
       const secondaryScore = nameScore > 0 ? 0 : getSecondaryMatchScore(facultyMember, normalizedQuery);
@@ -127,7 +129,13 @@ export const searchFaculty = (facultyDirectory, query, schoolFilter, departmentF
         score: Math.max(nameScore, secondaryScore),
       };
     })
-    .filter((facultyMember) => facultyMember.score > 0)
+    .filter((facultyMember) => facultyMember.score > 0);
+
+  const maxScore = scored.reduce((max, r) => Math.max(max, r.score), 0);
+  const minAllowedScore = maxScore >= 700 ? 400 : 0;
+
+  return scored
+    .filter((r) => r.score >= minAllowedScore)
     .sort((left, right) => right.score - left.score || left.name.localeCompare(right.name));
 };
 
