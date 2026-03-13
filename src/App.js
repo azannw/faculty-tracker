@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState, useDeferredValue, memo, useCallback } from 'react';
+import React, { useEffect, useMemo, useRef, useState, useDeferredValue, memo, useCallback } from 'react';
 import { Building2, Check, ChevronDown, Copy, Mail, MapPin, Phone, Search, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { facultyDirectory, schoolOptions } from './data/facultyDirectory';
@@ -100,6 +100,8 @@ function App() {
   const [schoolFilter, setSchoolFilter] = useState('all');
   const [departmentFilter, setDepartmentFilter] = useState('all');
   const [copiedEmailId, setCopiedEmailId] = useState('');
+  const [deptDropdownOpen, setDeptDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const deferredSearchQuery = useDeferredValue(searchQuery);
   const deferredSchoolFilter = useDeferredValue(schoolFilter);
@@ -118,6 +120,30 @@ function App() {
       setDepartmentFilter('all');
     }
   }, [departmentFilter, departmentOptions]);
+
+  // Close dropdown when school changes
+  useEffect(() => {
+    setDeptDropdownOpen(false);
+  }, [schoolFilter]);
+
+  // Close dropdown on outside click or Escape
+  useEffect(() => {
+    if (!deptDropdownOpen) return;
+    const close = (e) => {
+      if (e.type === 'keydown' && e.key !== 'Escape') return;
+      if (e.type === 'mousedown' && dropdownRef.current?.contains(e.target)) return;
+      if (e.type === 'touchstart' && dropdownRef.current?.contains(e.target)) return;
+      setDeptDropdownOpen(false);
+    };
+    document.addEventListener('mousedown', close);
+    document.addEventListener('touchstart', close);
+    document.addEventListener('keydown', close);
+    return () => {
+      document.removeEventListener('mousedown', close);
+      document.removeEventListener('touchstart', close);
+      document.removeEventListener('keydown', close);
+    };
+  }, [deptDropdownOpen]);
 
   const filteredFaculty = useMemo(
     () => searchFaculty(facultyDirectory, deferredSearchQuery, deferredSchoolFilter, deferredDepartmentFilter),
@@ -205,20 +231,61 @@ function App() {
             </div>
 
             {schoolFilter !== 'all' && (
-              <div className="relative sm:w-56 shrink-0 rounded-2xl border border-zinc-700/50 bg-zinc-800/80 search-glow">
-                <select
-                  value={departmentFilter}
-                  onChange={(e) => setDepartmentFilter(e.target.value)}
-                  className={`w-full rounded-2xl bg-transparent py-3 sm:py-3.5 pl-4 pr-10 text-sm font-medium focus:outline-none appearance-none cursor-pointer transition-colors ${
-                    departmentFilter === 'all' ? 'text-zinc-400' : 'text-zinc-200'
+              <div ref={dropdownRef} className="relative sm:w-56 shrink-0">
+                <button
+                  type="button"
+                  aria-haspopup="listbox"
+                  aria-expanded={deptDropdownOpen}
+                  onClick={() => setDeptDropdownOpen((prev) => !prev)}
+                  className={`w-full flex items-center justify-between rounded-2xl border bg-zinc-800/80 py-3 sm:py-3.5 pl-4 pr-3.5 text-sm font-medium transition-all search-glow ${
+                    deptDropdownOpen ? 'border-zinc-600' : 'border-zinc-700/50'
                   }`}
                 >
-                  <option value="all">All Departments</option>
-                  {departmentOptions.map((dept) => (
-                    <option key={dept} value={dept}>{dept}</option>
-                  ))}
-                </select>
-                <ChevronDown size={14} className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500" />
+                  <span className={`truncate ${departmentFilter === 'all' ? 'text-zinc-400' : 'text-zinc-200'}`}>
+                    {departmentFilter === 'all' ? 'All Departments' : departmentFilter}
+                  </span>
+                  <ChevronDown
+                    size={14}
+                    className={`shrink-0 ml-2 text-zinc-500 transition-transform duration-150 ${deptDropdownOpen ? 'rotate-180' : ''}`}
+                  />
+                </button>
+
+                {deptDropdownOpen && (
+                  <div
+                    role="listbox"
+                    className="absolute top-full left-0 right-0 sm:min-w-[260px] mt-1.5 rounded-xl bg-zinc-800 border border-zinc-700/50 shadow-2xl shadow-black/40 z-50 py-1 max-h-64 overflow-y-auto overscroll-contain no-scrollbar"
+                  >
+                    <button
+                      type="button"
+                      role="option"
+                      aria-selected={departmentFilter === 'all'}
+                      onClick={() => { setDepartmentFilter('all'); setDeptDropdownOpen(false); }}
+                      className={`w-full text-left px-4 py-3 sm:py-2.5 text-sm transition-colors ${
+                        departmentFilter === 'all'
+                          ? 'text-white bg-blue-500/10'
+                          : 'text-zinc-400 hover:text-white hover:bg-zinc-700/40'
+                      }`}
+                    >
+                      All Departments
+                    </button>
+                    {departmentOptions.map((dept) => (
+                      <button
+                        key={dept}
+                        type="button"
+                        role="option"
+                        aria-selected={departmentFilter === dept}
+                        onClick={() => { setDepartmentFilter(dept); setDeptDropdownOpen(false); }}
+                        className={`w-full text-left px-4 py-3 sm:py-2.5 text-sm transition-colors ${
+                          departmentFilter === dept
+                            ? 'text-white bg-blue-500/10'
+                            : 'text-zinc-400 hover:text-white hover:bg-zinc-700/40'
+                        }`}
+                      >
+                        {dept}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
           </div>
