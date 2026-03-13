@@ -190,7 +190,7 @@ function App() {
         </div>
       </header>
 
-      <main className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8">
+      <main className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8 min-w-0">
 
         {/* Homepage hero */}
         {!shouldShowResults && (
@@ -253,7 +253,7 @@ function App() {
                 {deptDropdownOpen && (
                   <div
                     role="listbox"
-                    className="absolute top-full left-0 right-0 sm:min-w-[260px] mt-1.5 rounded-xl bg-zinc-800 border border-zinc-700/50 shadow-2xl shadow-black/40 z-50 py-1 max-h-64 overflow-y-auto overscroll-contain no-scrollbar"
+                    className="absolute top-full left-0 right-0 mt-1.5 rounded-xl bg-zinc-800 border border-zinc-700/50 shadow-2xl shadow-black/40 z-50 py-1 max-h-64 overflow-y-auto overscroll-contain"
                   >
                     <button
                       type="button"
@@ -292,7 +292,7 @@ function App() {
         </div>
 
         {/* Filter pills */}
-        <div className={`mt-3 flex gap-1.5 overflow-x-auto no-scrollbar sm:gap-2 sm:overflow-visible sm:flex-wrap ${!shouldShowResults ? 'sm:justify-center' : ''}`}>
+        <div className={`mt-3 flex flex-wrap gap-1.5 sm:gap-2 ${!shouldShowResults ? 'justify-center' : ''}`}>
           {schoolOptions.map((school) => {
             const isActive = schoolFilter === school.value;
             return (
@@ -300,7 +300,7 @@ function App() {
                 key={school.value}
                 aria-label={school.label}
                 onClick={() => setSchoolFilter(school.value)}
-                className={`shrink-0 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-150 border ${
+                className={`rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium transition-all duration-150 border ${
                   isActive
                     ? 'bg-white text-zinc-900 border-transparent'
                     : 'bg-zinc-800/70 text-zinc-400 border-zinc-700/40 hover:bg-zinc-700/60 hover:text-zinc-200'
@@ -369,7 +369,7 @@ function App() {
                 </button>
               </div>
             ) : (
-              <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 min-w-0">
                 <AnimatePresence mode="popLayout">
                   {filteredFaculty.map((facultyMember) => (
                     <FacultyCard
